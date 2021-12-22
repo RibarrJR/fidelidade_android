@@ -1,36 +1,23 @@
 import 'package:flutter/material.dart';
+import '../widget/stateful/AppNavBar.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('+Fidelidade'),
       ),
-      body: Container(
-        width: 200,
-        height: 200,
+      body: Center(
+        child: Container(
+          width: 200,
+          height: 200,
+          color: Colors.blue,
+        ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Menu',
-            backgroundColor: Colors.red,
-          ),
-        ],
-        currentIndex: 0,
-        // backgroundColor: Colors.green,
-        selectedItemColor: Colors.blue[900],
-        onTap: (value) {
-          print(value);
-        },
-      ),
+      bottomNavigationBar: AppNavBar(),
     );
   }
 }
