@@ -14,10 +14,10 @@ class App extends StatelessWidget {
       initialRoute: '/',
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: {
+        '/': (context) => WelcomeScreen(),
         '/home': (context) => const HomePage(),
       },
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
     );
   }
 }
