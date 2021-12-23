@@ -1,4 +1,3 @@
-import 'package:fidelidade_android/components/AlreadyHaveAnAccountCheck.dart';
 import 'package:fidelidade_android/components/ForgotPassword.dart';
 import 'package:fidelidade_android/components/RoundedButton.dart';
 import 'package:fidelidade_android/components/RoundedPasswordField.dart';
