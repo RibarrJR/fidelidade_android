@@ -17,7 +17,6 @@ class RoundedPasswordField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: "Senha",
           labelStyle: TextStyle(color: kPrimaryColor),
-          border: InputBorder.none,
         ),
       ),
     );
