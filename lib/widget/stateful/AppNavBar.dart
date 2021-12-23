@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppNavBar extends StatefulWidget {
+  final Function onNavChange;
+
+  const AppNavBar({Key? key, required this.onNavChange}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _AppNavBarState();
@@ -9,6 +13,14 @@ class AppNavBar extends StatefulWidget {
 
 class _AppNavBarState extends State<AppNavBar> {
   int index = 0;
+  late Function _onNavChange;
+
+  @override
+  void initState() {
+    _onNavChange = widget.onNavChange;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
@@ -38,6 +50,7 @@ class _AppNavBarState extends State<AppNavBar> {
                         onPressed: () {
                           setState(() {
                             index = 0;
+                            _onNavChange(index);
                           });
                         },
                         icon: const Icon(Icons.home)),
@@ -64,6 +77,7 @@ class _AppNavBarState extends State<AppNavBar> {
                         onPressed: () {
                           setState(() {
                             index = 1;
+                            _onNavChange(index);
                           });
                         },
                         icon: const Icon(Icons.menu)),
