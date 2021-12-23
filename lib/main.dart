@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/pages/HomePage.dart';
 import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,9 +10,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: "+Fideliade",
+      initialRoute: '/',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: WelcomeScreen(),
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        '/home': (context) => const HomePage(),
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
