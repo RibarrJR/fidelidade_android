@@ -1,6 +1,6 @@
+import 'package:fidelidade_android/pages/HomePage.dart';
+import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
-
-import './pages/HomePage.dart';
 
 void main() {
   runApp(App());
@@ -14,8 +14,10 @@ class App extends StatelessWidget {
       initialRoute: '/',
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: {
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
       },
+      debugShowCheckedModeBanner: false,
+      home: WelcomeScreen(),
     );
   }
 }
