@@ -1,9 +1,9 @@
-import 'package:fidelidade_android/constants.dart';
-import 'package:fidelidade_android/pages/SignUp/SignUpScreen.dart';
-import 'package:flutter/material.dart';
-import 'package:fidelidade_android/pages/Login/LoginScreen.dart';
-import 'package:fidelidade_android/pages/Welcome/components/WelcomeBackground.dart';
 import 'package:fidelidade_android/components/RoundedButton.dart';
+import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/pages/Login/LoginScreen.dart';
+import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
+import 'package:fidelidade_android/pages/Welcome/components/WelcomeBackground.dart';
+import 'package:flutter/material.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override
@@ -60,7 +60,7 @@ class WelcomeBody extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return SignUpPage();
                     },
                   ),
                 );
