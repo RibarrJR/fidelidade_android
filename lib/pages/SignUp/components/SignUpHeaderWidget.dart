@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class SignUpHeader extends StatelessWidget {
   final String imagePath;
   final int iconColor;
+  final void Function()? onTap;
   const SignUpHeader({
     Key? key,
-    required this.imagePath, required this.iconColor,
+    required this.imagePath, required this.iconColor, this.onTap,
   }) : super(key: key);
 
   @override
@@ -23,7 +24,7 @@ class SignUpHeader extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              // Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
