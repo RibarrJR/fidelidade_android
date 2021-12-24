@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class LabelWithIcon extends StatelessWidget {
   final String label;
+  final IconData icon;
   final void Function() onTap;
-  const LabelWithIcon({Key? key, required this.label, required this.onTap})
+  const LabelWithIcon({Key? key, required this.label, required this.onTap, required this.icon})
       : super(key: key);
 
   @override
@@ -24,7 +25,7 @@ class LabelWithIcon extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Icon(
-              Icons.arrow_forward,
+              icon,
               color: Color(0xff161E64),
               size: 26,
             ),
