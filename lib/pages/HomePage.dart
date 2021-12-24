@@ -23,9 +23,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('+Fidelidade'),
-      ),
       body: IndexedStack(
         index: _index,
         children: screens,
@@ -63,19 +60,48 @@ class MenuContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Menu Content"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigator.pop(context);
-          },
-          child: const Text(
-            'Menu content',
-            style: TextStyle(fontSize: 60, color: Colors.deepPurple),
+        toolbarHeight: 84,
+        automaticallyImplyLeading: false,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(right: 32.00),
+                width: _size.width,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                  ),
+                ),
+                height: 52,
+                child: const Text(
+                  'Menu',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 36),
+                ),
+              ),
+            ],
           ),
+        ),
+      ),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16.00),
+        child: Column(
+          children: [
+            ElevatedButton(onPressed: () {}, child: const Text('one')),
+            ElevatedButton(onPressed: () {}, child: const Text('two')),
+            ElevatedButton(onPressed: () {}, child: const Text('3')),
+          ],
         ),
       ),
     );
