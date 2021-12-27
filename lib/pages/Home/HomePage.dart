@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/AppChart.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,13 +10,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Home Content"),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigator.pop(context);
-          },
-          child: const Text('Home content'),
-        ),
+      body: Column(
+        children: const [
+          AppChart(),
+        ],
       ),
     );
   }
