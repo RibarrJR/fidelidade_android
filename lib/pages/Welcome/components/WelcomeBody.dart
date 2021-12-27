@@ -32,14 +32,7 @@ class WelcomeBody extends StatelessWidget {
             RoundedButton(
               text: "Entrar",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushNamed('/home');
               },
             ),
             Padding(
@@ -56,14 +49,7 @@ class WelcomeBody extends StatelessWidget {
               color: kPrimaryLightColor,
               textColor: kPrimaryColor,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpPage();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushNamed('/signup');
               },
             ),
           ],

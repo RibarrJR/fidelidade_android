@@ -1,5 +1,7 @@
 import 'package:fidelidade_android/pages/MainPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
+import 'package:fidelidade_android/pages/HomePage.dart';
+import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
 import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,8 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => const MainPage(),
-        '/cadastro': (context) => const SignUpPage(),
+        '/signup': (context) => const SignUpPage(),
+        '/signup/2': (context) => const SignUpSecondPage(),
       },
       debugShowCheckedModeBanner: false,
     );
