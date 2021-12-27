@@ -1,10 +1,8 @@
 import 'package:fidelidade_android/components/Input.dart';
-import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/utils/Validators.dart';
 import 'package:fidelidade_android/widget/LabelWithIconWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
 class _FormData {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
