@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -21,7 +22,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               margin: const EdgeInsets.only(right: 32.00),
               width: _size.width,
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: primaryColor,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10.0),
                   bottomRight: Radius.circular(10.0),

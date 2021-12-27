@@ -3,7 +3,6 @@ import 'package:fidelidade_android/components/RoundedButton.dart';
 import 'package:fidelidade_android/components/RoundedPasswordField.dart';
 import 'package:fidelidade_android/components/RoundedInputField.dart';
 import 'package:fidelidade_android/pages/Login/components/LoginBackground.dart';
-import 'package:fidelidade_android/pages/SignUp/SignUpScreen.dart';
 import 'package:flutter/material.dart';
 
 class LoginBody extends StatelessWidget {
@@ -52,14 +51,7 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             ForgotPassword(
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushNamed('/signup');
               },
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/components/Input.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -47,83 +48,82 @@ class _SecondFormState extends State<SecondForm> {
         key: widget.formKey,
         child: Column(
           children: [
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => fieldRequired(value!),
-                controller: _form.password,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    hintText: 'Digite sua senha', labelText: 'Senha')),
+            Input(
+              obscureText: true,
+              controller: _form.password,
+              hintText: 'Digite sua senha',
+              labelText: 'Senha',
+              validator: (value) => fieldRequired(value!),
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) =>
-                    validateConfirmPassword(value!, _form.password.text),
-                controller: _form.confirmPassword,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    hintText: "Confirme sua senha",
-                    labelText: 'Confirmar Senha')),
+            Input(
+              obscureText: true,
+              controller: _form.confirmPassword,
+              hintText: 'Confirme sua senha',
+              labelText: 'Confirmar Senha',
+              validator: (value) =>
+                  validateConfirmPassword(value!, _form.password.text),
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                controller: _form.cep,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null) {
-                    return null;
-                  }
-                  if (value.length == 9) {
-                    _fetchCep(_form.cep.text);
-                    return null;
-                  } else {
-                    return 'CEP INVALIDO';
-                  }
-                },
-                inputFormatters: [
-                  MaskTextInputFormatter(
-                      mask: "#####-###", filter: {"#": RegExp(r'[0-9]')})
-                ],
-                decoration: const InputDecoration(
-                    hintText: 'Digite seu CEP', labelText: 'CEP')),
+            Input(
+              controller: _form.cep,
+              hintText: 'Digite seu CEP',
+              labelText: 'CEP',
+              validator: (value) {
+                if (value == null) {
+                  return null;
+                }
+                if (value.length == 9) {
+                  _fetchCep(_form.cep.text);
+                  return null;
+                } else {
+                  return 'CEP INVALIDO';
+                }
+              },
+              inputFormatters: [
+                MaskTextInputFormatter(
+                    mask: "#####-###", filter: {"#": RegExp(r'[0-9]')})
+              ],
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => fieldRequired(value!),
-                controller: _form.state,
-                readOnly: true,
-                decoration: const InputDecoration(labelText: 'Estado')),
+            Input(
+              readOnly: true,
+              controller: _form.state,
+              labelText: 'Estado',
+              validator: (value) => fieldRequired(value!),
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => fieldRequired(value!),
-                controller: _form.city,
-                readOnly: true,
-                decoration: const InputDecoration(labelText: 'Cidade')),
+            Input(
+              readOnly: true,
+              controller: _form.city,
+              labelText: 'Cidade',
+              validator: (value) => fieldRequired(value!),
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => fieldRequired(value!),
-                controller: _form.adress,
-                readOnly: true,
-                decoration: const InputDecoration(labelText: 'Endereço')),
+            Input(
+              readOnly: true,
+              controller: _form.adress,
+              labelText: 'Endereço',
+              validator: (value) => fieldRequired(value!),
+            ),
             Container(
               height: 15,
             ),
-            TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => fieldRequired(value!),
-                controller: _form.number,
-                decoration: const InputDecoration(labelText: 'Número')),
+            Input(
+              controller: _form.number,
+              labelText: 'Número',
+              validator: (value) => fieldRequired(value!),
+            ),
             Container(
               height: 60,
             ),
