@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppNavBar extends StatefulWidget {
@@ -27,7 +28,7 @@ class _AppNavBarState extends State<AppNavBar> {
     return Container(
       width: _size.width,
       height: 80,
-      color: Colors.blue[900],
+      color: Colors.blue ,
       child: Stack(
         children: [
           CustomPaint(
@@ -135,7 +136,7 @@ class NavBarCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Colors.blue
+      ..color = primaryColor
       ..style = PaintingStyle.fill;
 
     Path path = Path();
