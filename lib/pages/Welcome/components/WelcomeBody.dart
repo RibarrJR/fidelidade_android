@@ -1,9 +1,9 @@
-import 'package:fidelidade_android/constants.dart';
-import 'package:fidelidade_android/pages/SignUp/SignUpScreen.dart';
-import 'package:flutter/material.dart';
-import 'package:fidelidade_android/pages/Login/LoginScreen.dart';
-import 'package:fidelidade_android/pages/Welcome/components/WelcomeBackground.dart';
 import 'package:fidelidade_android/components/RoundedButton.dart';
+import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/pages/Login/LoginScreen.dart';
+import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
+import 'package:fidelidade_android/pages/Welcome/components/WelcomeBackground.dart';
+import 'package:flutter/material.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override
@@ -32,14 +32,7 @@ class WelcomeBody extends StatelessWidget {
             RoundedButton(
               text: "Entrar",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushNamed('/home');
               },
             ),
             Padding(
@@ -56,14 +49,7 @@ class WelcomeBody extends StatelessWidget {
               color: kPrimaryLightColor,
               textColor: kPrimaryColor,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushNamed('/signup');
               },
             ),
           ],
