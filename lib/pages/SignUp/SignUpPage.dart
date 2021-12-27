@@ -12,7 +12,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void _submit() {
+  void _submit(data) {
+    print(data);
     if (_formKey.currentState!.validate()) {
       Navigator.of(context).pushNamed('/signup/2');
     }
@@ -46,7 +47,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SignUpForm(
                 formKey: _formKey,
-                onSubmit: _submit,
+                onSubmit: (data) => _submit(data),
               )
             ],
           ),

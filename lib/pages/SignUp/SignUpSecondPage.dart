@@ -11,7 +11,8 @@ class SignUpSecondPage extends StatefulWidget {
 class _SignUpsecondPageState extends State<SignUpSecondPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void _submit() {
+  void _submit(data) {
+    print(data);
     if (_formKey.currentState!.validate()) {
       Navigator.of(context).popAndPushNamed('/home');
     }
@@ -46,7 +47,7 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
                 ),
                 SecondForm(
                   formKey: _formKey,
-                  onSubmit: _submit,
+                  onSubmit: (data) => _submit(data),
                 )
               ],
             ),

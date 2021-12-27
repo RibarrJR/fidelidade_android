@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppMenuItem extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppMenuItem extends StatelessWidget {
       child: ListTile(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text(pageName), icon],
+          children: [Text(pageName, style: TextStyle(color: primaryColor, fontWeight: FontWeight.w900),), icon],
         ),
         enableFeedback: true,
         enabled: true,
@@ -30,7 +31,7 @@ class AppMenuItem extends StatelessWidget {
           thickness: 2,
           indent: 0,
           endIndent: 2,
-          color: Colors.black,
+          color: gray,
         ),
       ),
     );
