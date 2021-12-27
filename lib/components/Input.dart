@@ -42,6 +42,5 @@ class Input extends StatelessWidget {
                     color: primaryColor, style: BorderStyle.solid, width: 1.7)),
             hintText: hintText,
             labelText: labelText));
-    ;
   }
 }

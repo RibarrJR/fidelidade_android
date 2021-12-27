@@ -29,10 +29,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
               height: 52,
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white, fontSize: 36),
+              child: Center(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white, fontSize: 36),
+                ),
               ),
             ),
           ],

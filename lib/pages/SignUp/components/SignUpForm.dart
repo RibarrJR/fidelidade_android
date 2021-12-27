@@ -13,7 +13,7 @@ class _FormData {
 
 class SignUpForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
-  final void Function() onSubmit;
+  final void Function(_FormData form) onSubmit;
 
   SignUpForm({Key? key, required this.formKey, required this.onSubmit})
       : super(key: key);
@@ -62,7 +62,7 @@ class SignUpForm extends StatelessWidget {
             LabelWithIcon(
               icon: Icons.arrow_forward,
               label: 'Proximo',
-              onTap: onSubmit,
+              onTap: () => onSubmit(_form),
             ),
             Container(
               height: 25,

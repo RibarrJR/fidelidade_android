@@ -18,7 +18,7 @@ class _FormData {
 
 class SecondForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
-  final void Function() onSubmit;
+  final void Function(_FormData form) onSubmit;
 
   SecondForm({Key? key, required this.formKey, required this.onSubmit})
       : super(key: key);
@@ -133,7 +133,7 @@ class _SecondFormState extends State<SecondForm> {
                 LabelWithIcon(
                   icon: Icons.done,
                   label: 'Cadastrar',
-                  onTap: widget.onSubmit,
+                  onTap: () => widget.onSubmit(_form),
                 ),
               ],
             ),

@@ -10,3 +10,5 @@ const secondaryColor = Color(0xFF3D59AB);
 
 const background = Color(0xFFffffff);
 const textColor = Color(0xFFffffff);
+
+const gray = Color(0xFFC4C4C4);

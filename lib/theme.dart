@@ -19,10 +19,11 @@ class MyTheme {
         buttonColor: primaryColor,
         textTheme: ButtonTextTheme.primary,
       ),
-      iconTheme: IconThemeData(color: primaryColor),
+      iconTheme: IconThemeData(color: gray),
       scaffoldBackgroundColor: background,
       cardColor: background,
       backgroundColor: background,
+      
       colorScheme: ColorScheme.fromSwatch().copyWith(secondary: secondaryColor),
     );
   }
