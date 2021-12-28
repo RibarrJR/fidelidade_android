@@ -12,9 +12,11 @@ void main() {
 }
 
 class App extends StatelessWidget {
+  static GlobalKey mtAppKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: mtAppKey,
       title: "+Fideliade",
       initialRoute: '/',
       theme: MyTheme.defaultTheme,

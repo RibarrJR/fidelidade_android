@@ -1,3 +1,5 @@
+import 'package:fidelidade_android/main.dart';
+import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
 import 'package:fidelidade_android/pages/SignUp/components/SignUpForm.dart';
 import 'package:flutter/material.dart';
 import 'components/SignUpHeaderWidget.dart';
@@ -15,7 +17,11 @@ class _SignUpPageState extends State<SignUpPage> {
   void _submit(data) {
     print(data);
     if (_formKey.currentState!.validate()) {
-      Navigator.of(context).pushNamed('/signup/2');
+      Navigator.pushNamed(
+        context,
+        "/signup/2"
+        // CustomNamedPageTransition(App.mtAppKey, "/signup/2"),
+      );
     }
   }
 
@@ -55,4 +61,40 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+}
+
+class CustomNamedPageTransition extends PageRouteBuilder {
+  CustomNamedPageTransition(
+    GlobalKey materialAppKey,
+    String routeName, {
+    Object? arguments,
+  }) : super(
+          settings: RouteSettings(
+            arguments: arguments,
+            name: routeName,
+          ),
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) {
+            assert(materialAppKey.currentWidget != null);
+            assert(materialAppKey.currentWidget is MaterialApp);
+            var mtapp = materialAppKey.currentWidget as MaterialApp;
+            var routes = mtapp.routes;
+            assert(routes!.containsKey(routeName));
+            return routes![routeName]!(context);
+          },
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+          transitionDuration: Duration(seconds: 1),
+        );
 }
