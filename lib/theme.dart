@@ -9,7 +9,7 @@ class MyTheme {
 
     return base.copyWith(
       appBarTheme: AppBarTheme(color: primaryColor),
-      inputDecorationTheme: InputDecorationTheme(fillColor: primaryColor),
+      inputDecorationTheme: InputDecorationTheme(fillColor: primaryColor,),
       accentColorBrightness: Brightness.dark,
       primaryColor: primaryColor,
       primaryColorDark: primaryColor,

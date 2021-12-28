@@ -2,7 +2,7 @@ import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppMenuItem extends StatelessWidget {
-  final Function pageCall;
+  final String pageCall;
   final String pageName;
   final Icon icon;
 
@@ -25,7 +25,7 @@ class AppMenuItem extends StatelessWidget {
         enableFeedback: true,
         enabled: true,
         onTap: () {
-          pageCall(pageName.toLowerCase());
+          Navigator.pushNamed(context, "/$pageCall");
         },
         subtitle: const Divider(
           thickness: 2,
