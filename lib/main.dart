@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/MainPage.dart';
+import 'package:fidelidade_android/pages/Notifications/NotificationsPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
 import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
@@ -20,6 +21,7 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => const MainPage(),
+        '/notifications': (context) => const NotificationsPage(),
         '/signup': (context) => const SignUpPage(),
         '/signup/2': (context) => const SignUpSecondPage(),
       },

@@ -12,3 +12,4 @@ const background = Color(0xFFffffff);
 const textColor = Color(0xFFffffff);
 
 const gray = Color(0xFFC4C4C4);
+const purpleColor = Color(0xFF907cff);
