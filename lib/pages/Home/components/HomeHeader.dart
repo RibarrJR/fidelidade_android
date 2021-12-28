@@ -45,25 +45,31 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ],
               ),
-              Stack(
-                children: [
-                  const Icon(Icons.notifications,
-                      color: Colors.white, size: 40),
-                  Positioned(
-                      right: 4,
-                      top: 4,
-                      child: Visibility(
-                        child: Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: primaryColor, width: 2),
-                              shape: BoxShape.circle,
-                              color: Colors.green),
-                        ),
-                        visible: hasNotification,
-                      ))
-                ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "/notifications");
+                },
+                child: Stack(
+                  children: [
+                    const Icon(Icons.notifications,
+                        color: Colors.white, size: 40),
+                    Positioned(
+                        right: 4,
+                        top: 4,
+                        child: Visibility(
+                          child: Container(
+                            width: 12,
+                            height: 12,
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: primaryColor, width: 2),
+                                shape: BoxShape.circle,
+                                color: Colors.green),
+                          ),
+                          visible: hasNotification,
+                        ))
+                  ],
+                ),
               )
             ],
           ),
