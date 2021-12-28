@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/pages/Home/components/HomeHeader.dart';
 import 'package:flutter/material.dart';
 import 'components/AppChart.dart';
 
@@ -7,9 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home Content"),
-      ),
+      appBar: const HomeHeader(name: 'Nome da pessoa', hasNotification: true),
       body: Column(
         children: const [
           AppChart(),
