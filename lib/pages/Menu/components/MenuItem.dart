@@ -1,7 +1,8 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppMenuItem extends StatelessWidget {
-  final Function pageCall;
+  final String pageCall;
   final String pageName;
   final Icon icon;
 
@@ -19,18 +20,18 @@ class AppMenuItem extends StatelessWidget {
       child: ListTile(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text(pageName), icon],
+          children: [Text(pageName, style: TextStyle(color: primaryColor, fontWeight: FontWeight.w900),), icon],
         ),
         enableFeedback: true,
         enabled: true,
         onTap: () {
-          pageCall(pageName.toLowerCase());
+          Navigator.pushNamed(context, "/$pageCall");
         },
         subtitle: const Divider(
           thickness: 2,
           indent: 0,
           endIndent: 2,
-          color: Colors.black,
+          color: gray,
         ),
       ),
     );

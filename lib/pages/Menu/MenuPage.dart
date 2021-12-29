@@ -7,34 +7,30 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void navigateTo(String value) {
-      Navigator.pushNamed(context, "/$value");
-    }
-
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Menu",
       ),
       body: ListView(
-        children: [
+        children: const [
           AppMenuItem(
-            pageCall: navigateTo,
-            icon: const Icon(Icons.person),
+            pageCall: '',
+            icon: Icon(Icons.person),
             pageName: "Perfil",
           ),
           AppMenuItem(
-            pageCall: navigateTo,
-            icon: const Icon(Icons.notifications),
+            pageCall: 'notifications',
+            icon: Icon(Icons.notifications),
             pageName: "Notificações",
           ),
           AppMenuItem(
-            pageCall: navigateTo,
-            icon: const Icon(Icons.wallet_giftcard),
+            pageCall: '',
+            icon: Icon(Icons.wallet_giftcard),
             pageName: "Sacar",
           ),
           AppMenuItem(
-            pageCall: navigateTo,
-            icon: const Icon(Icons.settings),
+            pageCall: '',
+            icon: Icon(Icons.settings),
             pageName: "Configurações",
           ),
         ],

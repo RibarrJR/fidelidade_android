@@ -1,28 +1,41 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
-  const CustomAppBar({Key? key, required this.title}) : super(key: key);
+  final bool? automaticallyImplyLeading;
+  bool isOnmodal;
+  CustomAppBar(
+      {Key? key,
+      required this.title,
+      this.automaticallyImplyLeading,
+      this.isOnmodal = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return AppBar(
       toolbarHeight: 84,
-      automaticallyImplyLeading: false,
+      elevation: 0,
+      automaticallyImplyLeading: automaticallyImplyLeading ?? false,
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       flexibleSpace: Container(
-        margin: EdgeInsets.symmetric(vertical: 18),
+        margin: isOnmodal
+            ? const EdgeInsets.symmetric(vertical: 18)
+            : EdgeInsets.zero,
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               margin: const EdgeInsets.only(right: 32.00),
+              padding:
+                  isOnmodal ? const EdgeInsets.only(left: 16) : EdgeInsets.zero,
               width: _size.width,
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: primaryColor,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10.0),
                   bottomRight: Radius.circular(10.0),
@@ -31,7 +44,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               height: 52,
               child: Text(
                 title,
-                textAlign: TextAlign.center,
+                textAlign: isOnmodal ? TextAlign.start : TextAlign.center,
                 style: const TextStyle(color: Colors.white, fontSize: 36),
               ),
             ),
