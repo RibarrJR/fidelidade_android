@@ -7,12 +7,8 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void navigateTo(String value) {
-      Navigator.pushNamed(context, "/$value");
-    }
-
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Menu",
       ),
       body: ListView(

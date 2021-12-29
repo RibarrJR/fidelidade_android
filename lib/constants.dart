@@ -13,3 +13,5 @@ const textColor = Color(0xFFffffff);
 
 const gray = Color(0xFFC4C4C4);
 const purpleColor = Color(0xFF907cff);
+
+const disabledBg = Color(0xFFe7e8f3);
