@@ -36,12 +36,13 @@ dependencies:
   flutter_svg: ^0.19.1
   circular_profile_avatar: ^1.0.6
   sqflite: ^2.0.1
-
   mask_text_input_formatter: ^2.0.0
   http: ^0.13.4
   email_validator: ^2.0.1
   cpf_cnpj_validator: ^2.0.0
   syncfusion_flutter_charts: ^19.4.38
+  flutter_native_splash: ^0.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -95,3 +96,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/images/logo_splash.png"
+  android: true
