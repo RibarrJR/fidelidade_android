@@ -15,7 +15,7 @@ class _PixPageState extends State<PixPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(
+        appBar: CustomAppBar(
           title: "Sacar - Pix",
           automaticallyImplyLeading: true,
         ),

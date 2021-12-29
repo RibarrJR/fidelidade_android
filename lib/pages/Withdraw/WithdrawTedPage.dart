@@ -14,7 +14,7 @@ class _WithDrawTedPageState extends State<WithDrawTedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Sacar - TED",
         automaticallyImplyLeading: true,
       ),
