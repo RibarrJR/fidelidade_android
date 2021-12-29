@@ -14,7 +14,7 @@ class MenuPage extends StatelessWidget {
       body: ListView(
         children: const [
           AppMenuItem(
-            pageCall: '',
+            pageCall: 'profile',
             icon: Icon(Icons.person),
             pageName: "Perfil",
           ),
