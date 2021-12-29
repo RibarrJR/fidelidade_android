@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppChartButton extends StatelessWidget {
@@ -10,10 +11,12 @@ class AppChartButton extends StatelessWidget {
     ButtonStyle(
       backgroundColor: MaterialStateProperty.all(Colors.white),
       side: MaterialStateProperty.all(const BorderSide(
-          width: 2, style: BorderStyle.solid, color: Colors.blue)),
+          width: 2, style: BorderStyle.solid, color: primaryColor)),
     ),
     ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(primaryColor),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
+      elevation: MaterialStateProperty.all(0),
     )
   ];
 
@@ -34,7 +37,7 @@ class AppChartButton extends StatelessWidget {
         },
         child: Text(
           label,
-          style: TextStyle(color: selected ? Colors.white : Colors.blue),
+          style: TextStyle(color: selected ? Colors.white : primaryColor),
         ));
   }
 }

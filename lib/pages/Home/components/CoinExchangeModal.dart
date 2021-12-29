@@ -28,7 +28,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
     return Wrap(
       children: <Widget>[
         CustomAppBar(
-          title: 'teste',
+          title: 'Trocar',
           isOnmodal: true,
         ),
         Column(
@@ -104,7 +104,6 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                 setState(() {
                   moneyAmount = 'R\$ $valueConverted';
                 });
-                print(moneyAmount);
               },
             ),
             Card(
