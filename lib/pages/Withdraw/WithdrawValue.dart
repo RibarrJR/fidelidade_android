@@ -1,9 +1,8 @@
 import 'package:fidelidade_android/components/CustomAppBar.dart';
-import 'package:fidelidade_android/components/Input.dart';
 import 'package:flutter/material.dart';
 
 class WithdrawValue extends StatelessWidget {
-  final myController = TextEditingController();
+  const WithdrawValue({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +20,6 @@ class WithdrawValue extends StatelessWidget {
           Container(
             child: Column(
                 children: const [Text('Saldo total'), Text('R\$ 3.200.00')]),
-          ),
-          Column(
-            children: [
-              const Text('Valor'),
-              // Input(
-              //     controller: myController,
-              //     labelText: 'Entre com o valor desejado')
-            ],
           )
         ],
       ),
