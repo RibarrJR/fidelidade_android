@@ -14,10 +14,10 @@ class ProfileScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           Padding(
-              padding: EdgeInsets.only(right: 20.0),
+              padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {},
-                child: Icon(
+                child: const Icon(
                   Icons.edit,
                   size: 26.0,
                 ),

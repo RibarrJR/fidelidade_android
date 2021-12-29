@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       flexibleSpace: Container(
+        margin: EdgeInsets.symmetric(vertical: 18),
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

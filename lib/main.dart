@@ -1,7 +1,8 @@
+// @dart=2.9
 import 'package:fidelidade_android/pages/MainPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
-import 'package:fidelidade_android/pages/Profile/ProfileScreen.dart';
+import 'package:fidelidade_android/pages/Profile/ProfilePage.dart';
 import 'package:fidelidade_android/pages/Welcome/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "+Fideliade",
-      initialRoute: '/profile',
+      initialRoute: '/',
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: {
         '/': (context) => WelcomeScreen(),

@@ -1,5 +1,6 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/pages/Bank/BankChips.dart';
 import 'package:fidelidade_android/pages/Profile/components/ProfileBackground.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,6 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(children: [
       ProfileBackground(
         child: Padding(
@@ -135,36 +135,46 @@ class ProfileBody extends StatelessWidget {
           ])),
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(20),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text.rich(TextSpan(children: <InlineSpan>[
-            WidgetSpan(
-              child: Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.logout, color: kPrimaryColor, size: 18)),
-            ),
-            TextSpan(
-                text: "Finalizar Sessão",
-                style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
-          ])),
+      const BankChips(),
+      GestureDetector(
+        onTap: () {
+          print(1);
+        },
+        child: const Padding(
+          padding: EdgeInsets.all(20),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text.rich(TextSpan(children: <InlineSpan>[
+              WidgetSpan(
+                child: Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: Icon(Icons.logout, color: kPrimaryColor, size: 18)),
+              ),
+              TextSpan(
+                  text: "Finalizar Sessão",
+                  style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
+            ])),
+          ),
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(20),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text.rich(TextSpan(children: <InlineSpan>[
-            WidgetSpan(
-              child: Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.power_off, color: kPrimaryColor, size: 18)),
-            ),
-            TextSpan(
-                text: "Apagar Conta",
-                style: TextStyle(color: Colors.red, fontSize: 18.0))
-          ])),
+      GestureDetector(
+        onTap: () {},
+        child: const Padding(
+          padding: EdgeInsets.all(20),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text.rich(TextSpan(children: <InlineSpan>[
+              WidgetSpan(
+                child: Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child:
+                        Icon(Icons.power_off, color: kPrimaryColor, size: 18)),
+              ),
+              TextSpan(
+                  text: "Apagar Conta",
+                  style: TextStyle(color: Colors.red, fontSize: 18.0))
+            ])),
+          ),
         ),
       ),
     ]);
