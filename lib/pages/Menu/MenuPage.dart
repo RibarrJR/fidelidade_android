@@ -24,7 +24,7 @@ class MenuPage extends StatelessWidget {
             pageName: "Notificações",
           ),
           AppMenuItem(
-            pageCall: '',
+            pageCall: 'withdraw',
             icon: Icon(Icons.wallet_giftcard),
             pageName: "Sacar",
           ),
