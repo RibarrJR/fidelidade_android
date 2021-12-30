@@ -36,6 +36,7 @@ class SignUpForm extends StatelessWidget {
               height: 15,
             ),
             Input(
+              keyboardType: TextInputType.emailAddress,
               controller: _form.email,
               hintText: 'Digite seu melhor email',
               labelText: 'E-mail',
@@ -45,6 +46,7 @@ class SignUpForm extends StatelessWidget {
               height: 15,
             ),
             Input(
+              keyboardType: TextInputType.number,
               controller: _form.cpf,
               hintText: 'Digite seu CPF',
               labelText: 'CPF',

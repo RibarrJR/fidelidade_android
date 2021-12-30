@@ -70,6 +70,7 @@ class _SecondFormState extends State<SecondForm> {
               height: 15,
             ),
             Input(
+              keyboardType: TextInputType.number,
               controller: _form.cep,
               hintText: 'Digite seu CEP',
               labelText: 'CEP',

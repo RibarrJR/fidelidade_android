@@ -14,25 +14,38 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // late AnimationController _controller;
-  // late Animation<Offset> offsetAnimation;
-
+  late AnimationController _animationController;
+  late Animation<Offset> offsetAnimation;
+  late Animation<double> animation;
   @override
   void initState() {
     super.initState();
-    // _controller =
-    //     AnimationController(duration: Duration(seconds: 3), vsync: this);
-    // offsetAnimation = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset.zero)
-    //     .animate(CurvedAnimation(
-    //   parent: _controller,
-    //   curve: Curves.easeIn,
-    // ));
+    _animationController =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+    offsetAnimation = Tween<Offset>(begin: Offset.zero, end: Offset.zero)
+        .animate(CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.fastLinearToSlowEaseIn));
   }
 
   void _submit(data) {
     print(data);
     if (_formKey.currentState!.validate()) {
-      Navigator.of(context).pushNamed('/signup/2');
+
+      Navigator.of(context).push(PageRouteBuilder(
+        transitionDuration: Duration(seconds: 1),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return new SlideTransition(
+            position: new Tween<Offset>(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            SignUpSecondPage(),
+      ));
     }
   }
 
@@ -72,4 +85,10 @@ class _SignUpPageState extends State<SignUpPage>
       ),
     );
   }
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
 }
