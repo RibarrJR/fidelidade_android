@@ -33,7 +33,7 @@ class SignUpHeader extends StatelessWidget {
               ),
             ),
           ),
-          Image.asset('images/miniLogo.png'),
+          Image.asset('assets/images/miniLogo.png'),
         ],
       ),
     ]);

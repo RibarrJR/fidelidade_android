@@ -11,6 +11,8 @@ class Input extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool? obscureText;
   final bool? readOnly;
+  final TextInputType? keyboardType;
+
   const Input({
     Key? key,
     required this.controller,
@@ -20,7 +22,7 @@ class Input extends StatelessWidget {
     this.autovalidateMode,
     this.inputFormatters,
     this.obscureText,
-    this.readOnly,
+    this.readOnly, this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,7 @@ class Input extends StatelessWidget {
     FocusNode myFocusNode = new FocusNode();
 
     return TextFormField(
+        keyboardType: keyboardType,
         readOnly: readOnly ?? false,
         obscureText: obscureText ?? false,
         autovalidateMode:

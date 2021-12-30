@@ -45,24 +45,27 @@ class InformationCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(bottom: 18),
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: const TextSpan(
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 18),
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: const TextSpan(
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Colors.white),
+                  children: <TextSpan>[
+                    TextSpan(text: 'No '),
+                    TextSpan(
+                        text: '+Fidelidade',
+                        style: TextStyle(color: moneyColor, fontSize: 18)),
+                    TextSpan(
+                        text:
+                            ', você pode recarregar as moedas para facilitar na hora da compra. Clique nesse card para saber mais.'),
+                  ],
                 ),
-                children: <TextSpan>[
-                  TextSpan(text: 'No '),
-                  TextSpan(
-                      text: '+Fidelidade',
-                      style: TextStyle(color: moneyColor, fontSize: 18)),
-                  TextSpan(
-                      text:
-                          ', você pode recarregar as moedas para facilitar na hora da compra. Clique nesse card para saber mais.'),
-                ],
               ),
             ),
           )
