@@ -12,6 +12,25 @@ class BankChips extends StatefulWidget {
 class _BankChipsState extends State<BankChips> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   void _submit() {}
+
+  void _openBankAddModal(context) {
+    final Size _size = MediaQuery.of(context).size;
+    showModalBottomSheet(
+        isScrollControlled: true,
+        constraints: BoxConstraints(
+            maxWidth: _size.width * 0.8, minHeight: _size.height * 0.95),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
+        context: context,
+        builder: (BuildContext bc) {
+          return BankAdd(formKey: _formKey, onSubmit: _submit);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -32,41 +51,7 @@ class _BankChipsState extends State<BankChips> {
             padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(0)),
           ),
           onPressed: () {
-            showGeneralDialog(
-              barrierLabel: "Label",
-              barrierDismissible: true,
-              barrierColor: Colors.black.withOpacity(0.5),
-              transitionDuration: Duration(milliseconds: 700),
-              context: context,
-              pageBuilder: (context, anim1, anim2) {
-                var size = MediaQuery.of(context).size;
-                return Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    height: size.height,
-                    child: BankAdd(
-                      formKey: _formKey,
-                      onSubmit: _submit,
-                    ),
-                    margin: const EdgeInsets.only(
-                        top: 50, left: 12, right: 12, bottom: 0),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10)),
-                    ),
-                  ),
-                );
-              },
-              transitionBuilder: (context, anim1, anim2, child) {
-                return SlideTransition(
-                  position: Tween(begin: Offset(0, 0), end: Offset(0, 0))
-                      .animate(anim1),
-                  child: child,
-                );
-              },
-            );
+            _openBankAddModal(context);
           },
           child: Text('Novo Banco'),
         ),
