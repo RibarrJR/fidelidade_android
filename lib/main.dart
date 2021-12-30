@@ -1,5 +1,4 @@
 // @dart=2.9
-import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/MainPage.dart';
 import 'package:fidelidade_android/pages/Notifications/NotificationsPage.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpPage.dart';
