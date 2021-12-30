@@ -2,6 +2,7 @@ import 'package:fidelidade_android/components/CustomAppBar.dart';
 import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/utils/Validators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class _FormData {
   TextEditingController type = TextEditingController();
@@ -26,13 +27,15 @@ class _BankAddState extends State<BankAdd> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
+    String dropdownValue = 'Banco do Brasil';
+
     return SingleChildScrollView(
       child: Form(
         key: widget.formKey,
@@ -44,114 +47,121 @@ class _BankAddState extends State<BankAdd> with TickerProviderStateMixin {
             ),
             TabBar(
               controller: _tabController,
-              tabs: const <Widget>[
+              labelColor: kPrimaryColor,
+              tabs: <Widget>[
                 Tab(
-                  icon: Icon(Icons.cloud_outlined),
+                  text: "Pix",
+                  icon: SvgPicture.asset("assets/images/pix.svg"),
                 ),
                 Tab(
-                  icon: Icon(Icons.beach_access_sharp),
-                ),
-                Tab(
-                  icon: Icon(Icons.brightness_5_sharp),
+                  text: "TED",
+                  icon: SvgPicture.asset("assets/images/ted.svg"),
                 ),
               ],
             ),
             Container(
-              width: _size.width,
-              height: _size.height*0.75,
-              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+              width: _size.width * 0.70,
+              height: _size.height * 0.60,
               child: TabBarView(
                 controller: _tabController,
-                children: const <Widget>[
-                  Center(
-                    child: Text("It's cloudy here"),
+                children: <Widget>[
+                  Wrap(
+                    children: [
+                      TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          controller: _form.account,
+                          validator: (value) => fieldRequired(value!),
+                          decoration: const InputDecoration(
+                              hintText: 'Digite a chave',
+                              labelText: 'Chave Pix')),
+                    ],
                   ),
-                  Center(
-                    child: Text("It's rainy here"),
-                  ),
-                  Center(
-                    child: Text("It's sunny here"),
+                  Wrap(
+                    children: [
+                      Center(
+                        child: DropdownButton<String>(
+                          value: dropdownValue,
+                          icon: const Icon(Icons.arrow_downward),
+                          elevation: 16,
+                          style: const TextStyle(color: kPrimaryColor),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.deepPurpleAccent,
+                          ),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>[
+                            'Banco do Brasil',
+                            'NuBank',
+                            'Itaú',
+                            'Bradesco'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      SizedBox(height: _size.height * 0.1),
+                      TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          controller: _form.account,
+                          validator: (value) => fieldRequired(value!),
+                          decoration: const InputDecoration(
+                              hintText: 'Digite a agência',
+                              labelText: 'Agência')),
+                      SizedBox(height: _size.height * 0.03),
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        controller: _form.account,
+                        validator: (value) => fieldRequired(value!),
+                        decoration: const InputDecoration(
+                            hintText: 'Digite a conta', labelText: 'Conta'),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            )
-            // DefaultTabController(
-            //     length: 2,
-            //     initialIndex: 0,
-            //     child: Column(
-            //       children: const [
-            //         TabBar(
-            //           tabs: [
-            //             Tab(icon: Icon(Icons.directions_car)),
-            //             Tab(icon: Icon(Icons.directions_transit)),
-            //           ],
-            //         ),
-            //         Divider(
-            //           height: 1,
-            //           thickness: 1,
-            //           indent: 20,
-            //           endIndent: 20,
-            //           color: kPrimaryColor,
-            //         ),
-            //         TabBarView(
-            //           children: [
-            //             Icon(Icons.directions_car),
-            //             Icon(Icons.directions_transit),
-            //           ],
-            //         ),
-            //       ],
-            //     )),
-            // Card(
-            //   margin: const EdgeInsets.all(20),
-            //   child: TextFormField(
-            //       autovalidateMode: AutovalidateMode.onUserInteraction,
-            //       controller: _form.account,
-            //       validator: (value) => fieldRequired(value!),
-            //       decoration: const InputDecoration(
-            //           hintText: 'Digite a agência', labelText: 'Agência')),
-            // ),
-            // Container(
-            //   margin: const EdgeInsets.all(20),
-            //   child: TextFormField(
-            //     autovalidateMode: AutovalidateMode.onUserInteraction,
-            //     controller: _form.account,
-            //     validator: (value) => fieldRequired(value!),
-            //     decoration: const InputDecoration(
-            //         hintText: 'Digite a conta', labelText: 'Conta'),
-            //   ),
-            // ),
-            // Container(
-            //   margin: const EdgeInsets.only(bottom: 10),
-            //   child: ElevatedButton(
-            //     style: ButtonStyle(
-            //       enableFeedback: false,
-            //       shadowColor: MaterialStateProperty.all(Colors.white),
-            //       backgroundColor: MaterialStateProperty.all(disabledBg),
-            //     ),
-            //     onPressed: () {},
-            //     child: const Text(
-            //       'Adicionar',
-            //       style: TextStyle(color: gray),
-            //     ),
-            //   ),
-            // ),
-            // Container(
-            //   margin: const EdgeInsets.only(bottom: 10),
-            //   child: ElevatedButton(
-            //     style: ButtonStyle(
-            //         enableFeedback: false,
-            //         shadowColor: MaterialStateProperty.all(Colors.white),
-            //         backgroundColor:
-            //             MaterialStateProperty.all(kPrimaryLightColor),
-            //         side: MaterialStateProperty.all(
-            //             const BorderSide(color: kPrimaryColor))),
-            //     onPressed: () {},
-            //     child: const Text(
-            //       'Cancelar',
-            //       style: TextStyle(color: kPrimaryColor),
-            //     ),
-            //   ),
-            // ),
+            ),
+            Container(
+              width: _size.width * 0.73,
+              margin: const EdgeInsets.only(bottom: 10),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  enableFeedback: false,
+                  shadowColor: MaterialStateProperty.all(Colors.white),
+                  backgroundColor: MaterialStateProperty.all(disabledBg),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Adicionar',
+                  style: TextStyle(color: gray),
+                ),
+              ),
+            ),
+            Container(
+              width: _size.width * 0.73,
+              margin: const EdgeInsets.only(bottom: 10),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    enableFeedback: false,
+                    shadowColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor:
+                        MaterialStateProperty.all(kPrimaryLightColor),
+                    side: MaterialStateProperty.all(
+                        const BorderSide(color: kPrimaryColor))),
+                onPressed: () {},
+                child: const Text(
+                  'Cancelar',
+                  style: TextStyle(color: kPrimaryColor),
+                ),
+              ),
+            ),
           ],
         ),
       ),
