@@ -31,6 +31,7 @@ class _SignUpPageState extends State<SignUpPage>
   void _submit(data) {
     print(data);
     if (_formKey.currentState!.validate()) {
+
       Navigator.of(context).push(PageRouteBuilder(
         transitionDuration: Duration(seconds: 1),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -84,10 +85,10 @@ class _SignUpPageState extends State<SignUpPage>
       ),
     );
   }
-
   @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
   }
+
 }
