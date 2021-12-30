@@ -36,9 +36,18 @@ class _WithDrawTedPageState extends State<WithDrawTedPage> {
           Container(
             height: 15,
           ),
-          TedCardWidget(bank: 'Santander',agency: '2920', accountNumber: '21908-0',type: 'Poupança',),
-          TedCardWidget(bank: 'Bradesco',agency: '4200', accountNumber: '03104-9',type: 'Corrente',),
-
+          TedCardWidget(
+            bank: 'Santander',
+            agency: '2920',
+            accountNumber: '21908-0',
+            type: 'Poupança',
+          ),
+          TedCardWidget(
+            bank: 'Bradesco',
+            agency: '4200',
+            accountNumber: '03104-9',
+            type: 'Corrente',
+          ),
         ],
       ),
     );

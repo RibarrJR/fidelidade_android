@@ -4,9 +4,9 @@ import 'package:fidelidade_android/widget/LabelWithIconWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class _FormData {
-  TextEditingController name = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController cpf = TextEditingController();
+  TextEditingController name = TextEditingController(text: 'v');
+  TextEditingController email = TextEditingController(text: 'v@v.c');
+  TextEditingController cpf = TextEditingController(text: '12693143608');
 }
 
 class SignUpForm extends StatelessWidget {
