@@ -1,4 +1,3 @@
-import 'package:avoid_keyboard/avoid_keyboard.dart';
 import 'package:fidelidade_android/components/CustomAppBar.dart';
 import 'package:fidelidade_android/components/RoundedInputField.dart';
 import 'package:fidelidade_android/constants.dart';
@@ -155,6 +154,5 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
         ],
       ),
     );
-    ;
   }
 }
