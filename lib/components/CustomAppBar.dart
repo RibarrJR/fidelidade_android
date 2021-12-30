@@ -15,40 +15,49 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
-    return AppBar(
-      toolbarHeight: 84,
-      elevation: 0,
-      automaticallyImplyLeading: automaticallyImplyLeading ?? false,
-      shadowColor: Colors.transparent,
-      backgroundColor: Colors.transparent,
-      flexibleSpace: Container(
-        margin: isOnmodal
-            ? const EdgeInsets.symmetric(vertical: 18)
-            : EdgeInsets.zero,
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(right: 32.00),
-              padding:
-                  isOnmodal ? const EdgeInsets.only(left: 16) : EdgeInsets.zero,
-              width: _size.width,
-              decoration: const BoxDecoration(
-                color: primaryColor,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+    return Container(
+      margin: isOnmodal ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
+      child: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: automaticallyImplyLeading ?? false,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          margin: isOnmodal
+              ? const EdgeInsets.symmetric(vertical: 18)
+              : const EdgeInsets.only(top: 16),
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(right: 32.00),
+                padding: isOnmodal
+                    ? const EdgeInsets.only(left: 16)
+                    : EdgeInsets.zero,
+                width: _size.width,
+                decoration: const BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                  ),
+                ),
+                height: 52,
+                child: Row(
+                  mainAxisAlignment: isOnmodal
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(color: Colors.white, fontSize: 36),
+                    ),
+                  ],
                 ),
               ),
-              height: 52,
-              child: Text(
-                title,
-                textAlign: isOnmodal ? TextAlign.start : TextAlign.center,
-                style: const TextStyle(color: Colors.white, fontSize: 36),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
