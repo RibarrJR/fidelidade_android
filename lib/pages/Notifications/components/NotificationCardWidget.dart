@@ -44,7 +44,7 @@ class NotificationCard extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.asset('/images/coin.png'),
+                    child: Image.asset('assets/images/coin.png'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 18.0),

@@ -14,6 +14,7 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         automaticallyImplyLeading: false,
+        elevation: 10,
         backgroundColor: primaryColor,
         flexibleSpace: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),

@@ -1,6 +1,11 @@
+import 'package:fidelidade_android/components/RoundedButton.dart';
+import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/Home/components/AppChart.dart';
 import 'package:fidelidade_android/pages/Home/components/CoinExchangeModal.dart';
 import 'package:fidelidade_android/pages/Home/components/HomeHeader.dart';
+import 'package:fidelidade_android/pages/Home/components/cards/BalanceCoinsCard.dart';
+import 'package:fidelidade_android/pages/Home/components/cards/BalanceMoneyCard.dart';
+import 'package:fidelidade_android/pages/Home/components/cards/InformationCard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,21 +34,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const HomeHeader(name: 'Nome da pessoa', hasNotification: true),
-      body: Column(
-        children: <Widget>[
-          Center(
-            heightFactor: 5,
-            child: ElevatedButton(
-              child: const Text('open'),
-              onPressed: () {
-                _openCoinExchangeModalBottomSheet(context);
-              },
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            BalanceCoinsCard(
+              size: _size,
+              coinAmount: coinAmount,
+              openModal: _openCoinExchangeModalBottomSheet,
             ),
-          ),
-          const AppChart(),
-        ],
+            BalanceMoneyCard(size: _size),
+            InformationCard(
+              size: _size,
+            ),
+            const AppChart(),
+          ],
+        ),
       ),
     );
   }
