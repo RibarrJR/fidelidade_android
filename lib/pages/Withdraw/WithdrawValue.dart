@@ -13,7 +13,8 @@ class WithdrawValue extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Sacar - Pix",
+        title: "Sacar",
+        automaticallyImplyLeading: true,
       ),
       body: Container(
         width: size.width,
