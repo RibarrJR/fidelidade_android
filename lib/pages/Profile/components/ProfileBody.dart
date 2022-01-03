@@ -1,12 +1,11 @@
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:fidelidade_android/components/ChangePassword.dart';
 import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/Bank/BankChips.dart';
 import 'package:fidelidade_android/pages/Profile/components/ProfileBackground.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 enum ImageSourceType { gallery, camera }
 
@@ -19,11 +18,11 @@ class ProfileBody extends StatefulWidget {
 
 class _ProfileBodyState extends State<ProfileBody> {
   late PopupMenu menu;
+  File? _imageFile;
   GlobalKey btnKey = GlobalKey();
   @override
   void initState() {
     super.initState();
-
     menu = PopupMenu(items: [
       // MenuItem(title: 'Copy', image: Image.asset('assets/copy.png')),
       // MenuItem(title: 'Home', image: Icon(Icons.home, color: Colors.white,)),
@@ -43,8 +42,23 @@ class _ProfileBodyState extends State<ProfileBody> {
     ], onClickMenu: onClickMenu, onDismiss: onDismiss, maxColumn: 2);
   }
 
-  void onClickMenu(MenuItemProvider item) {
-    print('Click menu -> ${item.menuTitle}');
+  void onClickMenu(MenuItemProvider item) async {
+    XFile? picture;
+    switch (item.menuTitle) {
+      case 'Câmera':
+        picture = await ImagePicker().pickImage(source: ImageSource.camera);
+        break;
+      case 'Álbum':
+        picture = await ImagePicker().pickImage(source: ImageSource.gallery);
+        break;
+      default:
+    }
+
+    setState(() {
+      if (picture != null) {
+        _imageFile = File(picture.path);
+      }
+    });
   }
 
   void stateChanged(bool isShow) {
@@ -81,8 +95,9 @@ class _ProfileBodyState extends State<ProfileBody> {
 
     return Column(children: [
       ProfileBackground(
+        imageFile: _imageFile,
         child: Padding(
-          padding: EdgeInsets.only(top: 120, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
           child: Column(
             children: <Widget>[
               Align(
@@ -94,10 +109,15 @@ class _ProfileBodyState extends State<ProfileBody> {
                     clipBehavior: Clip.none,
                     fit: StackFit.expand,
                     children: [
-                      CircleAvatar(
-                        backgroundImage: const NetworkImage(
-                            "https://avatars.githubusercontent.com/u/4026715?v=4"),
-                      ),
+                      _imageFile == null
+                          ? const Icon(
+                              Icons.account_circle,
+                              color: Colors.white,
+                              size: 128,
+                            )
+                          : CircleAvatar(
+                              backgroundImage: Image.file(_imageFile!).image,
+                            ),
                       Positioned(
                           bottom: 0,
                           right: -25,
@@ -107,13 +127,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                               menu.show(widgetKey: btnKey);
                             },
                             elevation: 2.0,
-                            fillColor: Color(0xFFF5F6F9),
-                            child: Icon(
+                            fillColor: const Color(0xFFF5F6F9),
+                            child: const Icon(
                               Icons.camera_alt_outlined,
                               color: Colors.blue,
                             ),
-                            padding: EdgeInsets.all(15.0),
-                            shape: CircleBorder(),
+                            padding: const EdgeInsets.all(15.0),
+                            shape: const CircleBorder(),
                           )),
                     ],
                   ),
