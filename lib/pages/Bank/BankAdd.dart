@@ -98,7 +98,8 @@ class _BankAddState extends State<BankAdd> with TickerProviderStateMixin {
                             'Banco do Brasil',
                             'NuBank',
                             'Itaú',
-                            'Bradesco'
+                            'Bradesco',
+                            'Caixa Econômica'
                           ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,

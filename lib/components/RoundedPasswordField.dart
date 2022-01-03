@@ -4,8 +4,10 @@ import 'package:fidelidade_android/constants.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
+  final String hintText;
   const RoundedPasswordField({
     Key? key,
+    this.hintText = "Senha",
     required this.onChanged,
   }) : super(key: key);
 
@@ -15,7 +17,7 @@ class RoundedPasswordField extends StatelessWidget {
       child: TextFormField(
         onChanged: onChanged,
         decoration: InputDecoration(
-          labelText: "Senha",
+          labelText: hintText,
           labelStyle: TextStyle(color: kPrimaryColor),
         ),
       ),
