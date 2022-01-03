@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     showModalBottomSheet(
         isScrollControlled: true,
         constraints: BoxConstraints(
-            maxWidth: _size.width * 0.8, minHeight: _size.height * 0.95),
+            maxWidth: _size.width * 0.8, minHeight: _size.height * 0.7),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),

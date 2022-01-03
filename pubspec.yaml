@@ -45,6 +45,7 @@ dependencies:
   flutter_advanced_avatar: ^1.0.0+1
   popup_menu: ^1.0.5
   image_picker: ^0.8.4+4
+  avoid_keyboard: ^0.3.0
 
 dev_dependencies:
   flutter_test:
