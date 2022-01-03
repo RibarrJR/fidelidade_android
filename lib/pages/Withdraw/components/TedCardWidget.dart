@@ -7,7 +7,13 @@ class TedCardWidget extends StatelessWidget {
   final String type;
   final String accountNumber;
 
-  const TedCardWidget({Key? key, required this.bank, required this.agency, required this.type, required this.accountNumber}) : super(key: key);
+  const TedCardWidget(
+      {Key? key,
+      required this.bank,
+      required this.agency,
+      required this.type,
+      required this.accountNumber})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +65,11 @@ class TedCardWidget extends StatelessWidget {
                               fontSize: 14)),
                       Text(accountNumber,
                           style: TextStyle(color: Colors.white, fontSize: 14)),
-                      Container(
-                        width: 15,
-                      ),
+                    ],
+                  ),
+                  Container(height: 15.0,),
+                  Row(
+                    children: [
                       Text('Tipo: ',
                           style: TextStyle(
                               color: Colors.white,
@@ -70,7 +78,7 @@ class TedCardWidget extends StatelessWidget {
                       Text(type,
                           style: TextStyle(color: Colors.white, fontSize: 14)),
                     ],
-                  ),
+                  )
                 ],
               )
             ],

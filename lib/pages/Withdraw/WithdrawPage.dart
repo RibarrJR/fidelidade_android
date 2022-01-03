@@ -31,7 +31,7 @@ class WithdrawPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/pix');
               },
               image: Image.asset(
-                'assets/images/pixIcon.png',
+                "assets/images/pixIcon.png",
                 width: 36,
                 height: 36,
               ),
@@ -103,6 +103,9 @@ class CustomTextButtonImage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Container(
+              width: 10.0,
+            ),
             image,
           ]),
       style: TextButton.styleFrom(
@@ -159,6 +162,9 @@ class CustomTextButtonIcon extends StatelessWidget {
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            Container(
+              width: 10.0,
             ),
             icon,
           ]),

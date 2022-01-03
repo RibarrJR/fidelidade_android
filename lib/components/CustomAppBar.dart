@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return Container(
       margin: isOnmodal ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
       child: AppBar(
-        elevation: 0,
+        elevation: 1,
         automaticallyImplyLeading: automaticallyImplyLeading ?? false,
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
