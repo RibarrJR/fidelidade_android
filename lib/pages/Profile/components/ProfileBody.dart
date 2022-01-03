@@ -1,16 +1,84 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+import 'package:fidelidade_android/components/ChangePassword.dart';
 import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/Bank/BankChips.dart';
 import 'package:fidelidade_android/pages/Profile/components/ProfileBackground.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
+import 'package:popup_menu/popup_menu.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileBody extends StatelessWidget {
-  const ProfileBody({
-    Key? key,
-  }) : super(key: key);
+enum ImageSourceType { gallery, camera }
+
+class ProfileBody extends StatefulWidget {
+  ProfileBody({Key? key}) : super(key: key);
+
+  @override
+  _ProfileBodyState createState() => _ProfileBodyState();
+}
+
+class _ProfileBodyState extends State<ProfileBody> {
+  late PopupMenu menu;
+  GlobalKey btnKey = GlobalKey();
+  @override
+  void initState() {
+    super.initState();
+
+    menu = PopupMenu(items: [
+      // MenuItem(title: 'Copy', image: Image.asset('assets/copy.png')),
+      // MenuItem(title: 'Home', image: Icon(Icons.home, color: Colors.white,)),
+      MenuItem(
+        title: 'Câmera',
+        image: const Icon(
+          Icons.photo_camera,
+          color: Colors.white,
+        ),
+      ),
+      MenuItem(
+          title: 'Álbum',
+          image: const Icon(
+            Icons.photo_album,
+            color: Colors.white,
+          )),
+    ], onClickMenu: onClickMenu, onDismiss: onDismiss, maxColumn: 2);
+  }
+
+  void onClickMenu(MenuItemProvider item) {
+    print('Click menu -> ${item.menuTitle}');
+  }
+
+  void stateChanged(bool isShow) {
+    print('menu is ${isShow ? 'showing' : 'closed'}');
+  }
+
+  void onDismiss() {
+    print('Menu is dismiss');
+  }
 
   @override
   Widget build(BuildContext context) {
+    PopupMenu.context = context;
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    void _submit() {}
+
+    void _openChangePasswordModal(context) {
+      final Size _size = MediaQuery.of(context).size;
+      showModalBottomSheet(
+          isScrollControlled: true,
+          constraints: BoxConstraints(
+              maxWidth: _size.width * 0.8, minHeight: _size.height * 0.95),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+          ),
+          context: context,
+          builder: (BuildContext bc) {
+            return ChangePassword(formKey: _formKey, onSubmit: _submit);
+          });
+    }
+
     return Column(children: [
       ProfileBackground(
         child: Padding(
@@ -19,10 +87,36 @@ class ProfileBody extends StatelessWidget {
             children: <Widget>[
               Align(
                 alignment: Alignment.topLeft,
-                child: CircularProfileAvatar(
-                  "https://avatars.githubusercontent.com/u/4026715?v=4",
-                  borderWidth: 0,
-                  radius: 60.0,
+                child: SizedBox(
+                  height: 115,
+                  width: 115,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    fit: StackFit.expand,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: const NetworkImage(
+                            "https://avatars.githubusercontent.com/u/4026715?v=4"),
+                      ),
+                      Positioned(
+                          bottom: 0,
+                          right: -25,
+                          child: RawMaterialButton(
+                            key: btnKey,
+                            onPressed: () {
+                              menu.show(widgetKey: btnKey);
+                            },
+                            elevation: 2.0,
+                            fillColor: Color(0xFFF5F6F9),
+                            child: Icon(
+                              Icons.camera_alt_outlined,
+                              color: Colors.blue,
+                            ),
+                            padding: EdgeInsets.all(15.0),
+                            shape: CircleBorder(),
+                          )),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 5.0),
@@ -99,22 +193,27 @@ class ProfileBody extends StatelessWidget {
           ),
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.all(20),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text.rich(
-            TextSpan(children: <InlineSpan>[
-              WidgetSpan(
-                child: Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child:
-                        Icon(Icons.password, color: kPrimaryColor, size: 18)),
-              ),
-              TextSpan(
-                  text: "Alterar Senha",
-                  style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
-            ]),
+      GestureDetector(
+        onTap: () {
+          _openChangePasswordModal(context);
+        },
+        child: const Padding(
+          padding: EdgeInsets.all(20),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text.rich(
+              TextSpan(children: <InlineSpan>[
+                WidgetSpan(
+                  child: Padding(
+                      padding: EdgeInsets.only(right: 10.0),
+                      child:
+                          Icon(Icons.password, color: kPrimaryColor, size: 18)),
+                ),
+                TextSpan(
+                    text: "Alterar Senha",
+                    style: TextStyle(color: kPrimaryColor, fontSize: 18.0))
+              ]),
+            ),
           ),
         ),
       ),
