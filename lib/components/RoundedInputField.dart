@@ -4,11 +4,13 @@ import 'package:fidelidade_android/constants.dart';
 
 class RoundedInputField extends StatelessWidget {
   final String hintText;
+  final String labelText;
   final IconData icon;
   final ValueChanged<String> onChanged;
   const RoundedInputField({
     Key? key,
-    required this.hintText,
+    required this.labelText,
+    this.hintText = '',
     this.icon = Icons.person,
     required this.onChanged,
   }) : super(key: key);
@@ -21,8 +23,8 @@ class RoundedInputField extends StatelessWidget {
               onChanged(value);
             },
             decoration: InputDecoration(
-              labelText: hintText,
-              labelStyle: TextStyle(color: kPrimaryColor),
-            )));
+                labelText: labelText,
+                labelStyle: TextStyle(color: kPrimaryColor),
+                hintText: hintText)));
   }
 }

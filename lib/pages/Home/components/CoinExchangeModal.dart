@@ -97,7 +97,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
               ),
             ),
             RoundedInputField(
-              hintText: "Moedas",
+              labelText: "Moedas",
               onChanged: (value) {
                 var textDouble = double.parse(value);
                 var valueConverted = textDouble / 100;
