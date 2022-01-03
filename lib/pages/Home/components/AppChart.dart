@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'dart:math';
@@ -105,7 +106,7 @@ class _AppChart extends State<AppChart> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.indigo,
+        color: disabledBg,
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       padding: const EdgeInsets.only(top: 10.0),
@@ -141,30 +142,30 @@ class _AppChart extends State<AppChart> {
             ),
           ),
           SfCartesianChart(
-            backgroundColor: Colors.indigo,
+            backgroundColor: disabledBg,
             enableSideBySideSeriesPlacement: true,
             plotAreaBorderWidth: 0,
             plotAreaBorderColor: Colors.transparent,
             primaryXAxis: CategoryAxis(
                 name: 'eixo x',
                 isVisible: true,
-                labelStyle: const TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: primaryColor),
                 borderColor: Colors.transparent,
                 majorGridLines: const MajorGridLines(color: Colors.transparent),
                 majorTickLines: const MajorTickLines(size: 0),
                 axisLine: const AxisLine(color: Colors.transparent)),
             primaryYAxis: NumericAxis(
                 name: 'eixo y',
-                labelStyle: const TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: primaryColor),
                 minimum: 0,
                 // interval: 10,
-                majorGridLines: const MajorGridLines(color: Colors.blueAccent),
+                majorGridLines: const MajorGridLines(color: gray),
                 majorTickLines: const MajorTickLines(size: 0),
                 axisLine: const AxisLine(color: Colors.transparent)),
             tooltipBehavior: _tooltip,
             series: [
               ColumnSeries(
-                  borderColor: Colors.blue,
+                  borderColor: primaryColor,
                   borderRadius: const BorderRadius.all(Radius.circular(4)),
                   borderWidth: 2,
                   dataSource: data,
@@ -172,12 +173,12 @@ class _AppChart extends State<AppChart> {
                   xValueMapper: (_ChartData data, _) => data.x,
                   yValueMapper: (_ChartData data, _) => data.y1,
                   name: "coins",
-                  color: const Color.fromRGBO(8, 142, 255, 1),
+                  color: primaryColor,
                   spacing: 0.2,
                   width: 0.5,
                   dataLabelSettings: const DataLabelSettings(isVisible: false)),
               ColumnSeries(
-                  borderColor: Colors.blue,
+                  borderColor: primaryColor,
                   borderRadius: const BorderRadius.all(Radius.circular(4)),
                   borderWidth: 2,
                   dataSource: data,
@@ -193,7 +194,7 @@ class _AppChart extends State<AppChart> {
           Container(
             height: 5,
             decoration: const BoxDecoration(
-              color: Colors.indigo,
+              color: disabledBg,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(8.0),
                 bottomLeft: Radius.circular(8.0),

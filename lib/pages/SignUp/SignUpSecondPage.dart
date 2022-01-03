@@ -33,7 +33,7 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
                   onTap: () {
                     Navigator.of(context).popAndPushNamed('/signup');
                   },
-                  imagePath: 'images/registerCircles2.png',
+                  imagePath: 'assets/images/registerCircles2.png',
                   iconColor: Colors.white.value,
                 ),
                 const Text(

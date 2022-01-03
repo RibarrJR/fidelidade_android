@@ -14,7 +14,7 @@ class MenuPage extends StatelessWidget {
       body: ListView(
         children: const [
           AppMenuItem(
-            pageCall: '',
+            pageCall: 'profile',
             icon: Icon(Icons.person),
             pageName: "Perfil",
           ),
@@ -24,7 +24,7 @@ class MenuPage extends StatelessWidget {
             pageName: "Notificações",
           ),
           AppMenuItem(
-            pageCall: 'withdraw/value',
+            pageCall: 'withdraw',
             icon: Icon(Icons.wallet_giftcard),
             pageName: "Sacar",
           ),

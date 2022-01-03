@@ -1,7 +1,7 @@
-import 'package:fidelidade_android/main.dart';
 import 'package:fidelidade_android/pages/SignUp/SignUpSecondPage.dart';
 import 'package:fidelidade_android/pages/SignUp/components/SignUpForm.dart';
 import 'package:flutter/material.dart';
+
 import 'components/SignUpHeaderWidget.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -11,17 +11,41 @@ class SignUpPage extends StatefulWidget {
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageState extends State<SignUpPage>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late AnimationController _animationController;
+  late Animation<Offset> offsetAnimation;
+  late Animation<double> animation;
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+    offsetAnimation = Tween<Offset>(begin: Offset.zero, end: Offset.zero)
+        .animate(CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.fastLinearToSlowEaseIn));
+  }
 
   void _submit(data) {
     print(data);
     if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(
-        context,
-        "/signup/2"
-        // CustomNamedPageTransition(App.mtAppKey, "/signup/2"),
-      );
+
+      Navigator.of(context).push(PageRouteBuilder(
+        transitionDuration: Duration(seconds: 1),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return new SlideTransition(
+            position: new Tween<Offset>(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            SignUpSecondPage(),
+      ));
     }
   }
 
@@ -35,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Column(
             children: [
               SignUpHeader(
-                imagePath: 'images/registerCircles.png',
+                imagePath: 'assets/images/registerCircles.png',
                 iconColor: 0xff161E64,
               ),
               Container(
@@ -61,40 +85,10 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
-}
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
-class CustomNamedPageTransition extends PageRouteBuilder {
-  CustomNamedPageTransition(
-    GlobalKey materialAppKey,
-    String routeName, {
-    Object? arguments,
-  }) : super(
-          settings: RouteSettings(
-            arguments: arguments,
-            name: routeName,
-          ),
-          pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) {
-            assert(materialAppKey.currentWidget != null);
-            assert(materialAppKey.currentWidget is MaterialApp);
-            var mtapp = materialAppKey.currentWidget as MaterialApp;
-            var routes = mtapp.routes;
-            assert(routes!.containsKey(routeName));
-            return routes![routeName]!(context);
-          },
-          transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child,
-          ) =>
-              FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-          transitionDuration: Duration(seconds: 1),
-        );
 }

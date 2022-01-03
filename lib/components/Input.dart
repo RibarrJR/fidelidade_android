@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Input extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? hintText;
   final String labelText;
   final String? Function(String?)? validator;
@@ -11,9 +11,12 @@ class Input extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool? obscureText;
   final bool? readOnly;
+  final TextInputType? keyboardType;
+  final Function(dynamic value)? onChanged;
+
   const Input({
     Key? key,
-    required this.controller,
+    this.controller,
     required this.labelText,
     this.validator,
     this.hintText,
@@ -21,6 +24,8 @@ class Input extends StatelessWidget {
     this.inputFormatters,
     this.obscureText,
     this.readOnly,
+    this.keyboardType,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -28,6 +33,10 @@ class Input extends StatelessWidget {
     FocusNode myFocusNode = new FocusNode();
 
     return TextFormField(
+        keyboardType: keyboardType,
+        onChanged: (value) {
+          onChanged!(value);
+        },
         readOnly: readOnly ?? false,
         obscureText: obscureText ?? false,
         autovalidateMode:
