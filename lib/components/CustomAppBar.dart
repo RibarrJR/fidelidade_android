@@ -16,54 +16,29 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return Container(
-      margin: isOnmodal ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16, right: 50, bottom: 16),
       child: AppBar(
         elevation: 1,
         automaticallyImplyLeading: automaticallyImplyLeading ?? false,
         shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        flexibleSpace: Container(
-          margin: isOnmodal
-              ? const EdgeInsets.symmetric(vertical: 18)
-              : const EdgeInsets.only(top: 16),
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 32.00),
-                padding: isOnmodal
-                    ? const EdgeInsets.only(left: 16)
-                    : EdgeInsets.zero,
-                width: _size.width,
-                decoration: const BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
-                  ),
-                ),
-                height: 52,
-                child: Row(
-                  mainAxisAlignment: isOnmodal
-                      ? MainAxisAlignment.start
-                      : MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(color: Colors.white, fontSize: 36),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+        backgroundColor: primaryColor,
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.white, fontSize: 36),
+        ),
+        centerTitle: !isOnmodal,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
           ),
         ),
+        toolbarHeight: isOnmodal ? 54 : 84,
       ),
     );
   }
 
   @override
   // Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-  Size get preferredSize => const Size.fromHeight(84);
+  Size get preferredSize => Size.fromHeight(isOnmodal ? 54 : 84);
 }
