@@ -38,7 +38,7 @@ class LoginBody extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
-              hintText: "CPF",
+              labelText: "CPF",
               onChanged: (value) {},
             ),
             RoundedPasswordField(
