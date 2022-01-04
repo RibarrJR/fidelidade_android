@@ -25,7 +25,7 @@ class _WithDrawTedPageState extends State<WithDrawTedPage> {
           ),
           Center(
             child: Text(
-              'Selecione a conta de destino',
+              'Selecione o destino',
               style: TextStyle(
                   color: primaryColor,
                   fontWeight: FontWeight.bold,
