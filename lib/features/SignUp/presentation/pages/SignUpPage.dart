@@ -22,19 +22,6 @@ class _SignUpPageState extends State<SignUpPage>
     print(data);
     if (_formKey.currentState!.validate()) {
       Navigator.of(context).pushNamed('/signup/2');
-      // PageRouteBuilder(
-      //   transitionDuration: Duration(milliseconds: 500),
-      //   transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      //     return new SlideTransition(
-      //       position: new Tween<Offset>(
-      //         begin: const Offset(1.0, 0.0),
-      //         end: Offset.zero,
-      //       ).animate(animation),
-      //       child: child,
-      //     );
-      // },
-      // pageBuilder: (context, animation, secondaryAnimation) =>
-      //     SignUpSecondPage(),
     }
   }
 
