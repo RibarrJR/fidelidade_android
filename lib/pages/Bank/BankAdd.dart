@@ -156,7 +156,9 @@ class _BankAddState extends State<BankAdd> with TickerProviderStateMixin {
                         MaterialStateProperty.all(kPrimaryLightColor),
                     side: MaterialStateProperty.all(
                         const BorderSide(color: kPrimaryColor))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 child: const Text(
                   'Cancelar',
                   style: TextStyle(color: kPrimaryColor),

@@ -1,8 +1,8 @@
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:fidelidade_android/components/ChangePassword.dart';
 import 'package:fidelidade_android/constants.dart';
 import 'package:fidelidade_android/pages/Bank/BankChips.dart';
 import 'package:fidelidade_android/pages/Profile/components/ProfileBackground.dart';
+import 'package:fidelidade_android/utils/Alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 import 'package:popup_menu/popup_menu.dart';
@@ -82,7 +82,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     return Column(children: [
       ProfileBackground(
         child: Padding(
-          padding: EdgeInsets.only(top: 120, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
           child: Column(
             children: <Widget>[
               Align(
@@ -94,8 +94,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                     clipBehavior: Clip.none,
                     fit: StackFit.expand,
                     children: [
-                      CircleAvatar(
-                        backgroundImage: const NetworkImage(
+                      const CircleAvatar(
+                        backgroundImage: NetworkImage(
                             "https://avatars.githubusercontent.com/u/4026715?v=4"),
                       ),
                       Positioned(
@@ -108,12 +108,12 @@ class _ProfileBodyState extends State<ProfileBody> {
                             },
                             elevation: 2.0,
                             fillColor: Color(0xFFF5F6F9),
-                            child: Icon(
+                            child: const Icon(
                               Icons.camera_alt_outlined,
                               color: Colors.blue,
                             ),
-                            padding: EdgeInsets.all(15.0),
-                            shape: CircleBorder(),
+                            padding: const EdgeInsets.all(15.0),
+                            shape: const CircleBorder(),
                           )),
                     ],
                   ),
@@ -237,7 +237,8 @@ class _ProfileBodyState extends State<ProfileBody> {
       const BankChips(),
       GestureDetector(
         onTap: () {
-          print(1);
+          showAlertDialog(context, "Confirmação",
+              "Gostaria de confirmar a Finalização da sessão?");
         },
         child: const Padding(
           padding: EdgeInsets.all(20),
@@ -257,7 +258,10 @@ class _ProfileBodyState extends State<ProfileBody> {
         ),
       ),
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          showAlertDialog(
+              context, "Confirmação", "Gostaria de confirmar apagar a conta?");
+        },
         child: const Padding(
           padding: EdgeInsets.all(20),
           child: Align(
