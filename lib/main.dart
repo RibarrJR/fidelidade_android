@@ -1,5 +1,5 @@
 // @dart=2.9
-import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/pages/Extract/ExtractPage.dart';
 import 'package:fidelidade_android/pages/Login/LoginScreen.dart';
 import 'package:fidelidade_android/pages/MainPage.dart';
 import 'package:fidelidade_android/pages/Notifications/NotificationsPage.dart';
@@ -20,6 +20,7 @@ void main() {
 
 class App extends StatelessWidget {
   static GlobalKey mtAppKey = GlobalKey();
+  App({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,6 +40,7 @@ class App extends StatelessWidget {
         '/withdraw': (context) => const WithdrawPage(),
         '/pix': (context) => const PixPage(),
         '/ted': (context) => const WithDrawTedPage(),
+        '/extract': (context) => const ExtractPage(),
       },
       debugShowCheckedModeBanner: false,
     );
