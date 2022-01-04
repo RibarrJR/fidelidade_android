@@ -1,7 +1,7 @@
-import 'package:fidelidade_android/components/CustomAppBar.dart';
-import 'package:fidelidade_android/components/RoundedPasswordField.dart';
-import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
+import 'package:fidelidade_android/shared/presentation/widgets/RoundedPasswordField.dart';
 import 'package:fidelidade_android/utils/Validators.dart';
+import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
