@@ -1,6 +1,7 @@
 import 'package:fidelidade_android/features/Profile/presentation/widgets/BankAdd.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:fidelidade_android/utils/Alerts.dart';
 
 class BankChips extends StatefulWidget {
   const BankChips({Key? key}) : super(key: key);
@@ -35,31 +36,34 @@ class _BankChipsState extends State<BankChips> {
   Widget build(BuildContext context) {
     return Row(children: [
       Chip(
-        label: Text('Banco do Brasil'),
-        deleteIcon: Icon(Icons.cancel),
-        backgroundColor: kPrimaryColor,
-        labelPadding: EdgeInsets.only(top: 13, bottom: 13, left: 10),
-        labelStyle: TextStyle(color: kPrimaryLightColor),
-        deleteIconColor: kPrimaryLightColor,
-        onDeleted: () {},
-      ),
+          label: const Text('Banco do Brasil'),
+          deleteIcon: const Icon(Icons.cancel),
+          backgroundColor: kPrimaryColor,
+          labelPadding: const EdgeInsets.only(top: 13, bottom: 13, left: 10),
+          labelStyle: const TextStyle(color: kPrimaryLightColor),
+          deleteIconColor: kPrimaryLightColor,
+          onDeleted: () {
+            showAlertDialog(
+                context, "Deletar Banco", "Deseja confirmar a exclusão?");
+          }),
       Chip(
         label: TextButton(
           style: ButtonStyle(
             textStyle: MaterialStateProperty.all<TextStyle>(
-                TextStyle(color: kPrimaryColor)),
-            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(0)),
+                const TextStyle(color: kPrimaryColor)),
+            padding:
+                MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
           ),
           onPressed: () {
             _openBankAddModal(context);
           },
-          child: Text('Novo Banco'),
+          child: const Text('Novo Banco'),
         ),
-        deleteIcon: Icon(Icons.add),
+        deleteIcon: const Icon(Icons.add),
         deleteIconColor: kPrimaryColor,
         backgroundColor: kPrimaryLightColor,
-        labelStyle: TextStyle(color: kPrimaryLightColor),
-        side: BorderSide(width: 1.5, color: kPrimaryColor),
+        labelStyle: const TextStyle(color: kPrimaryLightColor),
+        side: const BorderSide(width: 1.5, color: kPrimaryColor),
         onDeleted: () {},
       ),
     ]);

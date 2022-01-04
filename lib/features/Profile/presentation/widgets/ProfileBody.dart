@@ -5,6 +5,7 @@ import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:fidelidade_android/utils/Alerts.dart';
 import 'dart:io';
 
 enum ImageSourceType { gallery, camera }
@@ -257,7 +258,8 @@ class _ProfileBodyState extends State<ProfileBody> {
       const BankChips(),
       GestureDetector(
         onTap: () {
-          print(1);
+          showAlertDialog(context, "Confirmação",
+              "Gostaria de confirmar a Finalização da sessão?");
         },
         child: const Padding(
           padding: EdgeInsets.all(20),
@@ -277,7 +279,10 @@ class _ProfileBodyState extends State<ProfileBody> {
         ),
       ),
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          showAlertDialog(
+              context, "Confirmação", "Gostaria de confirmar apagar a conta?");
+        },
         child: const Padding(
           padding: EdgeInsets.all(20),
           child: Align(
