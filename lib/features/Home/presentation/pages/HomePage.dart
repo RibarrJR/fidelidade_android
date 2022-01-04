@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   final String coinAmount = "1000";
   const HomePage({Key? key}) : super(key: key);
 
-  void _openCoinExchangeModalBottomSheet(context) {
+  void _openCoinExchangeModalBottomSheet(context, isCoinToMoney) {
     final Size _size = MediaQuery.of(context).size;
     showModalBottomSheet(
         isScrollControlled: true,
@@ -27,8 +27,7 @@ class HomePage extends StatelessWidget {
         context: context,
         builder: (BuildContext bc) {
           return CoinExchangeModal(
-            coinAmount: coinAmount,
-          );
+              coinAmount: coinAmount, isCoinToMoney: isCoinToMoney);
         });
   }
 
@@ -45,7 +44,10 @@ class HomePage extends StatelessWidget {
               coinAmount: coinAmount,
               openModal: _openCoinExchangeModalBottomSheet,
             ),
-            BalanceMoneyCard(size: _size),
+            BalanceMoneyCard(
+              size: _size,
+              openModal: _openCoinExchangeModalBottomSheet,
+            ),
             InformationCard(
               size: _size,
             ),

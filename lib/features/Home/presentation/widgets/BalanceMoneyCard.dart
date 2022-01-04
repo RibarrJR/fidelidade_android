@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class BalanceMoneyCard extends StatelessWidget {
   final Size size;
   Function? openModal;
-  BalanceMoneyCard({Key? key, required this.size}) : super(key: key);
+  BalanceMoneyCard({Key? key, required this.size, this.openModal})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class BalanceMoneyCard extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all(primaryColor)),
                         onPressed: () {
-                          openModal!(context);
+                          openModal!(context, false);
                         },
                         child: const Text('Converter',
                             style: TextStyle(
