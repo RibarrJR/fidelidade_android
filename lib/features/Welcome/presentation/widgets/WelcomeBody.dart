@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/shared/presentation/widgets/CustomDividerWidget.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dart';
 import 'package:fidelidade_android/features/Welcome/presentation/widgets/WelcomeBackground.dart';
 import 'package:fidelidade_android/utils/constants.dart';
@@ -25,16 +26,15 @@ class WelcomeBody extends StatelessWidget {
             RoundedButton(
               text: "Entrar",
               press: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamed('/home');
               },
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: Container(
-                    width: 120,
-                    height: 35,
-                    child: Image.asset('assets/images/ou.png')),
+            const Padding(
+              padding: EdgeInsets.only(top: 0.0),
+              child: const Center(
+                child:  CustomDivider(
+                  text: 'Ou',
+                ),
               ),
             ),
             RoundedButton(

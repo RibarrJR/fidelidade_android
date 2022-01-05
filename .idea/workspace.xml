@@ -12,29 +12,10 @@
     <list default="true" id="f989faa7-6c64-4869-8e07-8aa591cbd33f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/FLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/Logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/coin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/miniLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/pixIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/registerCircles.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/registerCircles2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Extract/presentation/pages/ExtractPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Extract/presentation/pages/ExtractPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Home/presentation/widgets/BalanceCoinsCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Home/presentation/widgets/BalanceCoinsCard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Home/presentation/widgets/CoinExchangeModal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Home/presentation/widgets/CoinExchangeModal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Login/presentation/widgets/LoginBackground.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Login/presentation/widgets/LoginBackground.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Login/presentation/widgets/LoginBody.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Login/presentation/widgets/LoginBody.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Notifications/presentation/widgets/NotificationCardWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Notifications/presentation/widgets/NotificationCardWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/SignUp/presentation/pages/SignUpPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/SignUp/presentation/pages/SignUpPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/SignUp/presentation/pages/SignUpSecondPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/SignUp/presentation/pages/SignUpSecondPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/SignUp/presentation/widgets/SignUpHeaderWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/SignUp/presentation/widgets/SignUpHeaderWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBackground.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBackground.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBody.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBody.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/Withdraw/presentation/pages/WithdrawPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Withdraw/presentation/pages/WithdrawPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
