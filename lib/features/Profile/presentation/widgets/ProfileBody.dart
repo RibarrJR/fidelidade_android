@@ -2,7 +2,9 @@ import 'package:fidelidade_android/features/Profile/presentation/widgets/ChangeP
 import 'package:fidelidade_android/features/Profile/presentation/widgets/BankChips.dart';
 import 'package:fidelidade_android/features/Profile/presentation/widgets/ProfileBackground.dart';
 import 'package:fidelidade_android/utils/constants.dart';
+import 'package:fidelidade_android/utils/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:fidelidade_android/utils/Alerts.dart';
@@ -19,7 +21,6 @@ class ProfileBody extends StatefulWidget {
 
 class _ProfileBodyState extends State<ProfileBody> {
   late PopupMenu menu;
-  File? _imageFile;
   GlobalKey btnKey = GlobalKey();
   @override
   void initState() {
@@ -55,11 +56,9 @@ class _ProfileBodyState extends State<ProfileBody> {
       default:
     }
 
-    setState(() {
-      if (picture != null) {
-        _imageFile = File(picture.path);
-      }
-    });
+    if (picture != null) {
+      profilePictureController.setImageFile(File(picture.path));
+    }
   }
 
   void stateChanged(bool isShow) {
@@ -95,125 +94,129 @@ class _ProfileBodyState extends State<ProfileBody> {
     }
 
     return Column(children: [
-      ProfileBackground(
-        imageFile: _imageFile,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
-          child: Column(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: SizedBox(
-                  height: 115,
-                  width: 115,
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    fit: StackFit.expand,
-                    children: [
-                      _imageFile == null
-                          ? const Icon(
-                              Icons.account_circle,
-                              color: Colors.white,
-                              size: 128,
-                            )
-                          : CircleAvatar(
-                              backgroundImage: Image.file(_imageFile!).image,
-                            ),
-                      Positioned(
-                          bottom: 0,
-                          right: -25,
-                          child: RawMaterialButton(
-                            key: btnKey,
-                            onPressed: () {
-                              menu.show(widgetKey: btnKey);
-                            },
-                            elevation: 2.0,
-                            fillColor: const Color(0xFFF5F6F9),
-                            child: const Icon(
-                              Icons.camera_alt_outlined,
-                              color: Colors.blue,
-                            ),
-                            padding: const EdgeInsets.all(15.0),
-                            shape: const CircleBorder(),
-                          )),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Eder Taveira",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 21.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "28/02/1983",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15.0),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text.rich(TextSpan(children: <InlineSpan>[
-                  WidgetSpan(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Icon(Icons.phone_android,
-                          color: Colors.white, size: 18),
+      Observer(builder: (context) {
+        return ProfileBackground(
+          imageFile: profilePictureController.imageFile,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
+            child: Column(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: SizedBox(
+                    height: 115,
+                    width: 115,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      fit: StackFit.expand,
+                      children: [
+                        profilePictureController.imageFile == null
+                            ? const Icon(
+                                Icons.account_circle,
+                                color: Colors.white,
+                                size: 128,
+                              )
+                            : CircleAvatar(
+                                backgroundImage: Image.file(
+                                  profilePictureController.imageFile!,
+                                ).image,
+                              ),
+                        Positioned(
+                            bottom: 0,
+                            right: -25,
+                            child: RawMaterialButton(
+                              key: btnKey,
+                              onPressed: () {
+                                menu.show(widgetKey: btnKey);
+                              },
+                              elevation: 2.0,
+                              fillColor: const Color(0xFFF5F6F9),
+                              child: const Icon(
+                                Icons.camera_alt_outlined,
+                                color: Colors.blue,
+                              ),
+                              padding: const EdgeInsets.all(15.0),
+                              shape: const CircleBorder(),
+                            )),
+                      ],
                     ),
                   ),
-                  TextSpan(
-                      text: "+55 61 98250-0159",
-                      style: TextStyle(color: Colors.white, fontSize: 18.0))
-                ])),
-              ),
-              const SizedBox(height: 5.0),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text.rich(TextSpan(children: <InlineSpan>[
-                  WidgetSpan(
-                    child: Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child:
-                            Icon(Icons.email, color: Colors.white, size: 18)),
+                ),
+                const SizedBox(height: 5.0),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Eder Taveira",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                  TextSpan(
-                      text: "edertaveira@gmail.com",
-                      style: TextStyle(color: Colors.white, fontSize: 18.0))
-                ])),
-              ),
-              const SizedBox(height: 5.0),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text.rich(TextSpan(children: <InlineSpan>[
-                  WidgetSpan(
-                    child: Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child: Icon(Icons.location_on,
-                            color: Colors.white, size: 18)),
+                ),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "28/02/1983",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.white,
+                    ),
                   ),
-                  TextSpan(
-                      text: "Brasília-DF",
-                      style: TextStyle(color: Colors.white, fontSize: 18.0))
-                ])),
-              )
-            ],
+                ),
+                const SizedBox(height: 15.0),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(TextSpan(children: <InlineSpan>[
+                    WidgetSpan(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Icon(Icons.phone_android,
+                            color: Colors.white, size: 18),
+                      ),
+                    ),
+                    TextSpan(
+                        text: "+55 61 98250-0159",
+                        style: TextStyle(color: Colors.white, fontSize: 18.0))
+                  ])),
+                ),
+                const SizedBox(height: 5.0),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(TextSpan(children: <InlineSpan>[
+                    WidgetSpan(
+                      child: Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child:
+                              Icon(Icons.email, color: Colors.white, size: 18)),
+                    ),
+                    TextSpan(
+                        text: "edertaveira@gmail.com",
+                        style: TextStyle(color: Colors.white, fontSize: 18.0))
+                  ])),
+                ),
+                const SizedBox(height: 5.0),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(TextSpan(children: <InlineSpan>[
+                    WidgetSpan(
+                      child: Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.location_on,
+                              color: Colors.white, size: 18)),
+                    ),
+                    TextSpan(
+                        text: "Brasília-DF",
+                        style: TextStyle(color: Colors.white, fontSize: 18.0))
+                  ])),
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
       GestureDetector(
         onTap: () {
           _openChangePasswordModal(context);
