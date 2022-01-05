@@ -58,17 +58,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   removeNotification: () => removeNotification(items, index)),
               );
             })
-
-        /* ListView(
-        children: [
-          Container(
-            height: 20,
-          ),
-          NotificationDate(),
-          NotificationCard(),
-          NotificationCard(),
-        ],
-      ), */
         );
   }
 }
