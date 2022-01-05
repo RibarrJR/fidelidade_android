@@ -38,7 +38,7 @@ class _PixPageState extends State<PixPage> {
             ),
             PixCardWidget(
                 type: 'Chave aleatória ',
-                value: "98a7dfia98a7dfia.....kjeiu#f&"),
+                value: "98a7dfia...kjeiu#f&"),
             PixCardWidget(type: 'CPF', value: "126.***.***-08"),
           ],
         ));
