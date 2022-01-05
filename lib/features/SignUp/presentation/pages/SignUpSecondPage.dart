@@ -25,7 +25,8 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          behavior:
+              ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -33,7 +34,7 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
                   onTap: () {
                     Navigator.of(context).popAndPushNamed('/signup');
                   },
-                  imagePath: 'assets/images/registerCircles2.png',
+                  imagePath: 'assets/images/register2Circles.svg',
                   iconColor: Colors.white.value,
                 ),
                 const Text(

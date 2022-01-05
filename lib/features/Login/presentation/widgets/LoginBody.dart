@@ -3,7 +3,9 @@ import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dar
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedPasswordField.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
 import 'package:fidelidade_android/features/Login/presentation/widgets/LoginBackground.dart';
+import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
@@ -16,24 +18,28 @@ class LoginBody extends StatelessWidget {
     return LoginBackground(
       child: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: Container(
-                    width: 200,
-                    height: 111,
-                    child: Image.asset('assets/images/FLogo.png')),
+            SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: SvgPicture.asset(
+                'assets/images/miniLogo.svg',
+                width: 85,
+                height: 85,
               ),
+            ),
+            SizedBox(
+              height: 60,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 0.5),
-              child: Center(
-                child: Container(
-                    width: 322,
-                    height: 75,
-                    child: Image.asset('assets/images/Bemvindo.png')),
+              child: Text(
+                'Bem vindo!',
+                style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: size.height * 0.03),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginBackground extends StatelessWidget {
   final Widget child;
@@ -10,22 +11,23 @@ class LoginBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      width: double.infinity,
-      height: size.height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Image.asset(
-              "assets/images/BackgroundElipses.png",
-              width: size.width * 1,
+    return SafeArea(
+      child: SizedBox(
+        width: size.width,
+        height: size.height,
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: SvgPicture.asset(
+                "assets/images/BackgroundElipses.svg",
+                width: size.width * 1,
+              ),
             ),
-          ),
-          child,
-        ],
+            child,
+          ],
+        ),
       ),
     );
   }

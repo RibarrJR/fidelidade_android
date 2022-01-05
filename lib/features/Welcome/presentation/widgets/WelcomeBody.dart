@@ -3,6 +3,7 @@ import 'package:fidelidade_android/features/Welcome/presentation/widgets/Welcome
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/features/Login/presentation/pages/LoginScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override
@@ -14,24 +15,17 @@ class WelcomeBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            /*Text(
-              "WELCOME TO EDU",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),*/
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: Container(
-                    width: 350,
-                    height: 83,
-                    child: Image.asset('assets/images/Logo.png')),
-              ),
+            Center(
+              child: SizedBox(
+                  width: 350,
+                  height: 83,
+                  child: SvgPicture.asset('assets/images/Logo.svg')),
             ),
             SizedBox(height: size.height * 0.10),
             RoundedButton(
               text: "Entrar",
               press: () {
-                Navigator.of(context).pushNamed('/home');
+                Navigator.of(context).pushNamed('/login');
               },
             ),
             Padding(
