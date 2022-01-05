@@ -1,5 +1,7 @@
 import 'package:fidelidade_android/utils/constants.dart';
+import 'package:fidelidade_android/utils/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomeHeader extends StatelessWidget with PreferredSizeWidget {
   final String name;
@@ -21,31 +23,44 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  const Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Icon(
-                        Icons.account_circle,
-                        size: 75,
-                        color: Colors.white,
-                      )),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Olá',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.white)),
-                      Text(name,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
+              Observer(builder: (context) {
+                return Row(
+                  children: <Widget>[
+                    profilePictureController.imageFile == null
+                        ? const Padding(
+                            padding: EdgeInsets.only(right: 10),
+                            child: Icon(
+                              Icons.account_circle,
+                              size: 75,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                ],
-              ),
+                            ),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: CircleAvatar(
+                              backgroundImage: Image.file(
+                                profilePictureController.imageFile!,
+                              ).image,
+                              radius: 32,
+                            ),
+                          ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Olá',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(color: Colors.white)),
+                        Text(name,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ],
+                );
+              }),
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, "/notifications");

@@ -13,14 +13,45 @@ import 'package:fidelidade_android/features/Profile/presentation/pages/ProfilePa
 import 'package:fidelidade_android/features/Welcome/presentation/pages/WelcomeScreen.dart';
 import 'package:fidelidade_android/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import 'package:fidelidade_android/shared/controller/MainPageController.dart';
+import 'package:fidelidade_android/features/Profile/controller/ProfilePictureController.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  const App({Key key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   static GlobalKey mtAppKey = GlobalKey();
-  App({Key key}) : super(key: key);
+
+  @override
+  void initState() {
+    _registerStores();
+
+    super.initState();
+  }
+
+  void _registerStores() {
+    // Para gerar um estado de escopo global é preciso registralo como singleton
+
+    // 1 - Gerar o getIt
+    var getIt = GetIt.I;
+
+    // 2 - Registrar o controller como singleton (Singleton é uma classe que só se instancia uma vez e com escopo global)
+    getIt.registerSingleton(MainPageController());
+    getIt.registerSingleton(ProfilePictureController());
+
+    // 3 - Ver o arquivo utils/global.dart
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
