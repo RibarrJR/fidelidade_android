@@ -3,6 +3,7 @@ import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CoinExchangeModal extends StatefulWidget {
   String coinAmount;
@@ -72,7 +73,11 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Image.asset('assets/images/coin.png'),
+                              child: SvgPicture.asset(
+                                "assets/images/coin.svg",
+                                width: 45,
+                                height: 45,
+                              ),
                             ),
                             Stack(
                               children: <Widget>[

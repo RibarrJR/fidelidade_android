@@ -28,36 +28,34 @@ class _SignUpPageState extends State<SignUpPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SignUpHeader(
-                  imagePath: 'assets/images/registerCircles.png',
-                  iconColor: 0xff161E64,
-                ),
-                Container(
-                  height: 10,
-                ),
-                Text(
-                  'Novo usuário',
-                  style: TextStyle(
-                      color: Color(0xff161E64),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 26),
-                ),
-                Container(
-                  height: 20,
-                ),
-                SignUpForm(
-                  formKey: _formKey,
-                  onSubmit: (data) => _submit(data),
-                )
-              ],
-            ),
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SignUpHeader(
+                imagePath: 'assets/images/registerCircles.svg',
+                iconColor: 0xff161E64,
+              ),
+              Container(
+                height: 10,
+              ),
+              Text(
+                'Novo usuário',
+                style: TextStyle(
+                    color: Color(0xff161E64),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 26),
+              ),
+              Container(
+                height: 20,
+              ),
+              SignUpForm(
+                formKey: _formKey,
+                onSubmit: (data) => _submit(data),
+              )
+            ],
           ),
         ),
       ),

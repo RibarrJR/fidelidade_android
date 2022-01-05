@@ -33,7 +33,7 @@ class App extends StatelessWidget {
         '/profile': (context) => const ProfileScreen(),
         '/home': (context) => const MainPage(),
         '/notifications': (context) => const NotificationsPage(),
-        '/signin': (context) => LoginScreen(),
+        '/login': (context) => LoginScreen(),
         '/signup': (context) => const SignUpPage(),
         '/signup/2': (context) => const SignUpSecondPage(),
         '/withdraw/value': (context) => const WithdrawValue(),
