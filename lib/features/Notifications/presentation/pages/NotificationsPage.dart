@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/features/Notifications/presentation/widgets/NotificationCardWidget.dart';
@@ -11,14 +13,53 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+  final items = List<String>.generate(6, (i) => 'Item ${i + 1}');
+
   @override
   Widget build(BuildContext context) {
+    void removeNotification(List items, int index) {
+      setState(() {
+        items.removeAt(index);
+      });
+    }
+
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Notificações",
-        automaticallyImplyLeading: true,
-      ),
-      body: ListView(
+        appBar: CustomAppBar(
+          title: "Notificações",
+          automaticallyImplyLeading: true,
+        ),
+        body: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final item = items[index];
+              if (index == 0) {
+                return Column(
+                  children: [
+                    const NotificationDate(),
+                    NotificationCard(
+                      item: item,
+                      removeNotification: () =>
+                        removeNotification(items, index)),
+                  ],
+                );
+              }
+
+              return Dismissible(
+                key: Key(item),
+                direction: DismissDirection.startToEnd,
+                onDismissed: (direction) {
+                  setState(() {
+                    items.removeAt(index);
+                  });
+                },
+                background: Container(color: Colors.transparent),
+                child: NotificationCard(
+                  item: item,
+                  removeNotification: () => removeNotification(items, index)),
+              );
+            })
+
+        /* ListView(
         children: [
           Container(
             height: 20,
@@ -27,8 +68,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
           NotificationCard(),
           NotificationCard(),
         ],
-      ),
-    );
+      ), */
+        );
   }
 }
 
@@ -42,9 +83,9 @@ class NotificationDate extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(right: 13.0),
+          padding: EdgeInsets.only(right: 13.0),
           child: Text(
             "28/12/2021",
             style: TextStyle(
