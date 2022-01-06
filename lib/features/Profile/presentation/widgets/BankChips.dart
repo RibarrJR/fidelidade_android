@@ -19,7 +19,7 @@ class _BankChipsState extends State<BankChips> {
     showModalBottomSheet(
         isScrollControlled: true,
         constraints: BoxConstraints(
-            maxWidth: _size.width * 0.8, minHeight: _size.height * 0.95),
+            maxWidth: _size.width * 0.9, minHeight: _size.height * 0.95),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),

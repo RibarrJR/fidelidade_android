@@ -44,19 +44,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 );
               }
 
-              return Dismissible(
-                key: Key(item),
-                direction: DismissDirection.startToEnd,
-                onDismissed: (direction) {
-                  setState(() {
-                    items.removeAt(index);
-                  });
-                },
-                background: Container(color: Colors.transparent),
-                child: NotificationCard(
+              return NotificationCard(
                   item: item,
-                  removeNotification: () => removeNotification(items, index)),
-              );
+                  removeNotification: () => removeNotification(items, index));
             })
         );
   }
