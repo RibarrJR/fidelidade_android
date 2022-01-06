@@ -22,7 +22,7 @@ class CustomDivider extends StatelessWidget {
         Text(
           text,
           style:
-              const TextStyle(fontWeight: FontWeight.w800, color: primaryColor),
+              const TextStyle(fontWeight: FontWeight.w800),
         ),
         const Expanded(
           child: Divider(

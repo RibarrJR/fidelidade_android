@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/features/SignUp/presentation/widgets/SignUpForm.dart';
 import 'package:fidelidade_android/features/SignUp/presentation/widgets/SignUpHeaderWidget.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage>
           child: Column(
             children: [
               SignUpHeader(
-                imagePath: 'assets/images/registerCircles.svg',
+                imagePath: registerCirclesImg,
                 iconColor: 0xff161E64,
               ),
               Container(

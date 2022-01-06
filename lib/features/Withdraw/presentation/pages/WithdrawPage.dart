@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/CustomDividerWidget.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,7 @@ class WithdrawPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/pix');
               },
               image: SvgPicture.asset(
-                "assets/images/pix.svg",
+                pixImg,
                 width: 42,
                 height: 42,
               ),
@@ -48,7 +49,7 @@ class WithdrawPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/ted');
               },
               image: SvgPicture.asset(
-                "assets/images/ted.svg",
+                tedImg,
                 width: 42,
                 height: 42,
               ),

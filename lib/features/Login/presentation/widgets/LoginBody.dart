@@ -3,6 +3,7 @@ import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dar
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedPasswordField.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
 import 'package:fidelidade_android/features/Login/presentation/widgets/LoginBackground.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,7 +25,7 @@ class LoginBody extends StatelessWidget {
             ),
             Center(
               child: SvgPicture.asset(
-                'assets/images/miniLogo.svg',
+                miniLogoImg,
                 width: 85,
                 height: 85,
               ),

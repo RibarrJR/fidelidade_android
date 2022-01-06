@@ -1,6 +1,7 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomDividerWidget.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dart';
 import 'package:fidelidade_android/features/Welcome/presentation/widgets/WelcomeBackground.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/features/Login/presentation/pages/LoginScreen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class WelcomeBody extends StatelessWidget {
               child: SizedBox(
                   width: 350,
                   height: 83,
-                  child: SvgPicture.asset('assets/images/Logo.svg')),
+                  child: SvgPicture.asset(logoImg)),
             ),
             SizedBox(height: size.height * 0.10),
             RoundedButton(

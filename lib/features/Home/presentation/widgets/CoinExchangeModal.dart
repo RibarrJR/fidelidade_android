@@ -1,6 +1,7 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -74,7 +75,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: SvgPicture.asset(
-                                "assets/images/coin.svg",
+                                coinImg,
                                 width: 45,
                                 height: 45,
                               ),

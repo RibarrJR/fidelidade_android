@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -48,7 +49,7 @@ class SignUpHeader extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8.0),
-                child: SvgPicture.asset('assets/images/miniLogo.svg',
+                child: SvgPicture.asset(miniLogoImg,
                     width: 48, height: 48),
               ),
             ],

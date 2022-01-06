@@ -1,5 +1,6 @@
 import 'package:fidelidade_android/features/SignUp/presentation/widgets/SignUpHeaderWidget.dart';
 import 'package:fidelidade_android/features/SignUp/presentation/widgets/SignUpSecondForm.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:flutter/material.dart';
 
 class SignUpSecondPage extends StatefulWidget {
@@ -25,8 +26,7 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: ScrollConfiguration(
-          behavior:
-              ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -34,7 +34,7 @@ class _SignUpsecondPageState extends State<SignUpSecondPage> {
                   onTap: () {
                     Navigator.of(context).popAndPushNamed('/signup');
                   },
-                  imagePath: 'assets/images/register2Circles.svg',
+                  imagePath: secondRegisterCirclesImg,
                   iconColor: Colors.white.value,
                 ),
                 const Text(

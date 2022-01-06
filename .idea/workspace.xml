@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f989faa7-6c64-4869-8e07-8aa591cbd33f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBody.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Welcome/presentation/widgets/WelcomeBody.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/Withdraw/presentation/pages/WithdrawPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/Withdraw/presentation/pages/WithdrawPage.dart" afterDir="false" />

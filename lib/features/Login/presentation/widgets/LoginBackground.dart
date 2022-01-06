@@ -1,3 +1,4 @@
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -21,7 +22,7 @@ class LoginBackground extends StatelessWidget {
               bottom: 0,
               right: 0,
               child: SvgPicture.asset(
-                "assets/images/BackgroundElipses.svg",
+                backgroundElipsesImg,
                 width: size.width * 1,
               ),
             ),
