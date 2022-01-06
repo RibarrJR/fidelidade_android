@@ -1,8 +1,11 @@
+import 'package:fidelidade_android/shared/presentation/widgets/CustomDividerWidget.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dart';
 import 'package:fidelidade_android/features/Welcome/presentation/widgets/WelcomeBackground.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/features/Login/presentation/pages/LoginScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override
@@ -14,18 +17,11 @@ class WelcomeBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            /*Text(
-              "WELCOME TO EDU",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),*/
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: Container(
-                    width: 350,
-                    height: 83,
-                    child: Image.asset('assets/images/Logo.png')),
-              ),
+            Center(
+              child: SizedBox(
+                  width: 350,
+                  height: 83,
+                  child: SvgPicture.asset(logoImg)),
             ),
             SizedBox(height: size.height * 0.10),
             RoundedButton(
@@ -34,13 +30,12 @@ class WelcomeBody extends StatelessWidget {
                 Navigator.of(context).pushNamed('/home');
               },
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: Container(
-                    width: 120,
-                    height: 35,
-                    child: Image.asset('assets/images/ou.png')),
+            const Padding(
+              padding: EdgeInsets.only(top: 0.0),
+              child: const Center(
+                child:  CustomDivider(
+                  text: 'Ou',
+                ),
               ),
             ),
             RoundedButton(

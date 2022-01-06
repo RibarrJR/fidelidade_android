@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:fidelidade_android/shared/controller/MainPageController.dart';
+import 'package:fidelidade_android/features/Profile/controller/ProfilePictureController.dart';
 
 void main() {
   runApp(const App());
@@ -46,6 +47,7 @@ class _AppState extends State<App> {
 
     // 2 - Registrar o controller como singleton (Singleton é uma classe que só se instancia uma vez e com escopo global)
     getIt.registerSingleton(MainPageController());
+    getIt.registerSingleton(ProfilePictureController());
 
     // 3 - Ver o arquivo utils/global.dart
   }
@@ -62,7 +64,7 @@ class _AppState extends State<App> {
         '/profile': (context) => const ProfileScreen(),
         '/home': (context) => const MainPage(),
         '/notifications': (context) => const NotificationsPage(),
-        '/signin': (context) => LoginScreen(),
+        '/login': (context) => LoginScreen(),
         '/signup': (context) => const SignUpPage(),
         '/signup/2': (context) => const SignUpSecondPage(),
         '/withdraw/value': (context) => const WithdrawValue(),

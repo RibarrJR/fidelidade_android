@@ -1,4 +1,5 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/utils/Validators.dart';
 import 'package:flutter/material.dart';
@@ -51,11 +52,11 @@ class _BankAddState extends State<BankAdd> with TickerProviderStateMixin {
               tabs: <Widget>[
                 Tab(
                   text: "Pix",
-                  icon: SvgPicture.asset("assets/images/pix.svg"),
+                  icon: SvgPicture.asset(pixImg),
                 ),
                 Tab(
                   text: "TED",
-                  icon: SvgPicture.asset("assets/images/ted.svg"),
+                  icon: SvgPicture.asset(tedImg),
                 ),
               ],
             ),
