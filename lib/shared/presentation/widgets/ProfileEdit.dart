@@ -1,4 +1,5 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
+import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedPasswordField.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +11,17 @@ class _FormData {
   TextEditingController account = TextEditingController();
 }
 
-class ChangePassword extends StatefulWidget {
+class ProfileEdit extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final void Function() onSubmit;
-  const ChangePassword(
-      {Key? key, required this.formKey, required this.onSubmit})
+  const ProfileEdit({Key? key, required this.formKey, required this.onSubmit})
       : super(key: key);
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<ProfileEdit> createState() => _ProfileEditState();
 }
 
-class _ChangePasswordState extends State<ChangePassword>
+class _ProfileEditState extends State<ProfileEdit>
     with TickerProviderStateMixin {
   final _FormData _form = _FormData();
   late TabController _tabController;
@@ -42,7 +42,7 @@ class _ChangePasswordState extends State<ChangePassword>
         child: Column(
           children: [
             CustomAppBar(
-              title: "Alterar Senha",
+              title: "Editar Perfil",
               isOnmodal: true,
             ),
             Container(
@@ -52,20 +52,99 @@ class _ChangePasswordState extends State<ChangePassword>
               child: Wrap(
                 children: [
                   SizedBox(height: _size.height * 0.1),
-                  RoundedPasswordField(
-                    hintText: "Senha Atual",
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: "Nome",
+                    ),
                     onChanged: (value) {},
                   ),
                   SizedBox(height: _size.height * 0.03),
-                  RoundedPasswordField(
-                    hintText: "Nova Senha",
+                  InkWell(
+                    onTap: () {
+                      //_selectDate(); // Call Function that has showDatePicker()
+                      showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now());
+                    },
+                    child: IgnorePointer(
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                            hintText: 'Nascimento', labelText: "Nascimento"),
+                        maxLength: 10,
+                        onSaved: (val) {},
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: _size.height * 0.03),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: "Telefone",
+                    ),
                     onChanged: (value) {},
                   ),
                   SizedBox(height: _size.height * 0.03),
-                  RoundedPasswordField(
-                    hintText: "Confirmar Senha",
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: "Email",
+                    ),
                     onChanged: (value) {},
                   ),
+                  SizedBox(height: _size.height * 0.03),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: "Cidade",
+                    ),
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: _size.height * 0.09),
+                  DropdownButton<String>(
+                    isExpanded: true,
+                    hint: const Text("Estado"),
+                    icon: const Icon(Icons.arrow_downward),
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.deepPurple),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (String? newValue) {},
+                    items: <String>[
+                      'Acre',
+                      'Alagoas',
+                      'Amapá',
+                      'Amazonas',
+                      'Bahia',
+                      'Ceará',
+                      'Distrito Federal',
+                      'Espírito Santo',
+                      'Goiás',
+                      'Maranhão',
+                      'Mato Grosso',
+                      'Mato Grosso do Sul',
+                      'Minas Gerais',
+                      'Pará',
+                      'Paraíba',
+                      'Paraná',
+                      'Pernambuco',
+                      'Piauí',
+                      'Rio de Janeiro',
+                      'Rio Grande do Norte',
+                      'Rio Grande do Sul',
+                      'Rondônia',
+                      'Roraima',
+                      'Santa Catarina',
+                      'São Paulo',
+                      'Sergipe',
+                      'Tocantins'
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )
                 ],
               ),
             ),
