@@ -2,6 +2,7 @@ import 'package:fidelidade_android/features/Extract/presentation/widgets/Extract
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ExtractPage extends StatefulWidget {
   const ExtractPage({Key? key}) : super(key: key);
