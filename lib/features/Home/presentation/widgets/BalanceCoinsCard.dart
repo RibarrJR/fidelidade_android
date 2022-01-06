@@ -1,5 +1,7 @@
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BalanceCoinsCard extends StatelessWidget {
   final Size size;
@@ -37,7 +39,11 @@ class BalanceCoinsCard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image.asset('assets/images/coin.png'),
+                      child: SvgPicture.asset(
+                        coinImg,
+                        width: 45,
+                        height: 45,
+                      ),
                     ),
                     Stack(
                       children: <Widget>[
