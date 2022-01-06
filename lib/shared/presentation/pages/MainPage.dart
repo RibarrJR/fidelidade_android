@@ -1,6 +1,7 @@
 import 'package:fidelidade_android/features/Home/presentation/pages/HomePage.dart';
 import 'package:fidelidade_android/features/Menu/presentation/pages/MenuPage.dart';
 import 'package:fidelidade_android/utils/global.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import '../widgets/AppNavBar.dart';
@@ -49,6 +50,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           // );
           return TabBarView(
             controller: _tabController,
+            physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
               HomePage(),
               MenuPage(),
