@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
@@ -19,7 +21,7 @@ class CoinExchangeModal extends StatefulWidget {
 class _CoinExchangeModalState extends State<CoinExchangeModal> {
   late String amount;
   late bool isCoinToMoney;
-  String moneyAmount = "R\$ 00,00";
+  String convertedAmount = "00,00";
 
   @override
   void initState() {
@@ -82,7 +84,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                 Stack(
                                   children: <Widget>[
                                     Text(
-                                      isCoinToMoney ? amount : '0',
+                                      isCoinToMoney ? amount : convertedAmount,
                                       style: TextStyle(
                                         fontSize: 40,
                                         foreground: Paint()
@@ -92,7 +94,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                       ),
                                     ),
                                     Text(
-                                      amount,
+                                      isCoinToMoney ? amount : convertedAmount,
                                       style: const TextStyle(
                                         fontSize: 40,
                                         color: primaryColor,
@@ -113,10 +115,13 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                         hintText: "Moedas",
                         keyboardType: TextInputType.number,
                         onChanged: (value) {
-                          var textDouble = double.parse(value);
-                          var valueConverted = textDouble / 100;
+                          var textDouble =
+                              value == "" ? 0 : double.parse(value);
+                          var valueConverted = isCoinToMoney
+                              ? textDouble / 100
+                              : textDouble * 100;
                           setState(() {
-                            moneyAmount = 'R\$ $valueConverted';
+                            convertedAmount = '$valueConverted';
                           });
                         },
                       ),
@@ -131,7 +136,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                             if (!isCoinToMoney) const YouHaveText(),
                             Center(
                               child: Text(
-                                isCoinToMoney ? moneyAmount : amount,
+                                isCoinToMoney ? convertedAmount : amount,
                                 style: const TextStyle(
                                     color: moneyColor, fontSize: 48),
                               ),
