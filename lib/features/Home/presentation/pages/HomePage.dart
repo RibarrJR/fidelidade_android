@@ -1,11 +1,9 @@
-import 'package:fidelidade_android/shared/presentation/widgets/RoundedButton.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/AppChart.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/BalanceCoinsCard.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/BalanceMoneyCard.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/CoinExchangeModal.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/HomeHeader.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/InformationCard.dart';
-import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
