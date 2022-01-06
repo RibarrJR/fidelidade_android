@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final String coinAmount = "1000";
+  final String moneyAmount = "500";
   const HomePage({Key? key}) : super(key: key);
 
-  void _openCoinExchangeModalBottomSheet(context, isCoinToMoney) {
+  void _openCoinExchangeModalBottomSheet(context, isCoinToMoney, amount) {
     final Size _size = MediaQuery.of(context).size;
     showModalBottomSheet(
         isScrollControlled: true,
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
         context: context,
         builder: (BuildContext bc) {
           return CoinExchangeModal(
-              coinAmount: coinAmount, isCoinToMoney: isCoinToMoney);
+              amount: amount, isCoinToMoney: isCoinToMoney);
         });
   }
 
@@ -45,9 +46,9 @@ class HomePage extends StatelessWidget {
               openModal: _openCoinExchangeModalBottomSheet,
             ),
             BalanceMoneyCard(
-              size: _size,
-              openModal: _openCoinExchangeModalBottomSheet,
-            ),
+                size: _size,
+                openModal: _openCoinExchangeModalBottomSheet,
+                moneyAmount: moneyAmount),
             InformationCard(
               size: _size,
             ),

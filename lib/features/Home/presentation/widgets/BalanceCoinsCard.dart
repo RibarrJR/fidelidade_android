@@ -69,7 +69,7 @@ class BalanceCoinsCard extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.white)),
                         onPressed: () {
-                          openModal!(context, true);
+                          openModal!(context, true, coinAmount);
                         },
                         child: const Text('Trocar',
                             style: TextStyle(

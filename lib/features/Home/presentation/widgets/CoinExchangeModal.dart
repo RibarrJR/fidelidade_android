@@ -5,11 +5,11 @@ import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CoinExchangeModal extends StatefulWidget {
-  String coinAmount;
+  String amount;
   bool isCoinToMoney;
 
   CoinExchangeModal(
-      {Key? key, required this.coinAmount, required this.isCoinToMoney})
+      {Key? key, required this.amount, required this.isCoinToMoney})
       : super(key: key);
 
   @override
@@ -17,13 +17,13 @@ class CoinExchangeModal extends StatefulWidget {
 }
 
 class _CoinExchangeModalState extends State<CoinExchangeModal> {
-  late String coinAmount;
+  late String amount;
   late bool isCoinToMoney;
   String moneyAmount = "R\$ 00,00";
 
   @override
   void initState() {
-    coinAmount = widget.coinAmount;
+    amount = widget.amount;
     isCoinToMoney = widget.isCoinToMoney;
     super.initState();
   }
@@ -82,7 +82,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                 Stack(
                                   children: <Widget>[
                                     Text(
-                                      coinAmount,
+                                      isCoinToMoney ? amount : '0',
                                       style: TextStyle(
                                         fontSize: 40,
                                         foreground: Paint()
@@ -92,7 +92,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                       ),
                                     ),
                                     Text(
-                                      coinAmount,
+                                      amount,
                                       style: const TextStyle(
                                         fontSize: 40,
                                         color: primaryColor,
@@ -131,7 +131,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                             if (!isCoinToMoney) const YouHaveText(),
                             Center(
                               child: Text(
-                                moneyAmount,
+                                isCoinToMoney ? moneyAmount : amount,
                                 style: const TextStyle(
                                     color: moneyColor, fontSize: 48),
                               ),
