@@ -11,6 +11,7 @@ class WithdrawValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       appBar: CustomAppBar(
         title: "Sacar",
@@ -21,22 +22,23 @@ class WithdrawValue extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Quanto gostaria de sacar?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 40,
-                    letterSpacing: 4,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor),
+            if (!isKeyboardOpen)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'Quanto gostaria de sacar?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 40,
+                      letterSpacing: 4,
+                      fontWeight: FontWeight.bold,
+                      color: kPrimaryColor),
+                ),
               ),
-            ),
             Container(
               width: size.width,
-              margin: const EdgeInsets.symmetric(horizontal: 60),
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               color: primaryColor,
               child: Column(children: const [
                 Align(
@@ -53,11 +55,11 @@ class WithdrawValue extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 30),
                   child: Text(
-                    'R\$ 3.200.00',
+                    'R\$3.200.00',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 50,
+                        fontSize: 40,
                         letterSpacing: 4,
                         fontWeight: FontWeight.bold),
                   ),
