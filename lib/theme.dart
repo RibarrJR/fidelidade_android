@@ -1,4 +1,4 @@
-import 'package:fidelidade_android/constants.dart';
+import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyTheme {
@@ -9,7 +9,9 @@ class MyTheme {
 
     return base.copyWith(
       appBarTheme: AppBarTheme(color: primaryColor),
-      inputDecorationTheme: InputDecorationTheme(fillColor: primaryColor),
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: primaryColor,
+      ),
       accentColorBrightness: Brightness.dark,
       primaryColor: primaryColor,
       primaryColorDark: primaryColor,
@@ -23,7 +25,6 @@ class MyTheme {
       scaffoldBackgroundColor: background,
       cardColor: background,
       backgroundColor: background,
-      
       colorScheme: ColorScheme.fromSwatch().copyWith(secondary: secondaryColor),
     );
   }
