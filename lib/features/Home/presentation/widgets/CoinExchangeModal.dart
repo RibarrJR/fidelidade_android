@@ -1,6 +1,5 @@
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
-import 'package:fidelidade_android/shared/presentation/widgets/RoundedInputField.dart';
 import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
