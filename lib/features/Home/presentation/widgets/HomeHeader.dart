@@ -25,6 +25,7 @@ class HomeHeader extends StatelessWidget with PreferredSizeWidget {
             children: <Widget>[
               Observer(builder: (context) {
                 return Row(
+                  key: const ValueKey("home_profile_header_key"),
                   children: <Widget>[
                     profilePictureController.imageFile == null
                         ? const Padding(
