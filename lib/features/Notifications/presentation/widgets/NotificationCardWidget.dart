@@ -79,13 +79,19 @@ class NotificationCard extends StatelessWidget {
                               children: const [
                                 Text(
                                   '300 moedas',
-                                  style: TextStyle(color: purpleColor),
+                                  style: TextStyle(
+                                    color: purpleColor,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold
+                                  ),
                                 ),
                                 Text(
                                   ' Drograria araujo',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.w200),
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 18,
+                                    ),
                                 ),
                               ],
                             ),

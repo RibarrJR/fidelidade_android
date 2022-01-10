@@ -86,20 +86,27 @@ class NotificationDate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: const [
-        Padding(
-          padding: EdgeInsets.only(right: 13.0),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 13.0, top: 45),
           child: Text(
             "28/12/2021",
             style: TextStyle(
-                fontWeight: FontWeight.bold, color: purpleColor, fontSize: 18),
+                fontWeight: FontWeight.normal, color: primaryColor, fontSize: 18),
           ),
         ),
-        Divider(
-          color: purpleColor,
-          endIndent: 16.0,
-          indent: 16.0,
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 8, 
+            bottom: 21,
+            left: 16,
+            right: 16        
+          ),
+          child: Container(
+            color: primaryColor,
+            height: 1,
+          ),
         ),
       ],
     );
