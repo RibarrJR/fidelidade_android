@@ -1,9 +1,11 @@
 // ignore_for_file: unnecessary_const
 
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
+import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:fidelidade_android/features/Notifications/presentation/widgets/NotificationCardWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({Key? key}) : super(key: key);
@@ -28,27 +30,50 @@ class _NotificationsPageState extends State<NotificationsPage> {
           title: "Notificações",
           automaticallyImplyLeading: true,
         ),
-        body: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              final item = items[index];
-              if (index == 0) {
-                return Column(
-                  children: [
-                    const NotificationDate(),
-                    NotificationCard(
+        body: items.isNotEmpty
+            ? ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  final item = items[index];
+                  if (index == 0) {
+                    return Column(
+                      children: [
+                        const NotificationDate(),
+                        NotificationCard(
+                            item: item,
+                            removeNotification: () =>
+                                removeNotification(items, index)),
+                      ],
+                    );
+                  }
+
+                  return NotificationCard(
                       item: item,
                       removeNotification: () =>
-                        removeNotification(items, index)),
-                  ],
-                );
-              }
-
-              return NotificationCard(
-                  item: item,
-                  removeNotification: () => removeNotification(items, index));
-            })
-        );
+                          removeNotification(items, index));
+                })
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                      child: SvgPicture.asset(
+                        fileEmpty,
+                        width: 259,
+                        height: 324,
+                  )),
+                  const SizedBox(height: 96),
+                  const Text(
+                    'Tudo certo, te avisaremos quando houver novas notificações!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(                        
+                        color: disabledBg,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ),
+                  ),
+                ],
+              ));
   }
 }
 
@@ -61,20 +86,27 @@ class NotificationDate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: const [
-        Padding(
-          padding: EdgeInsets.only(right: 13.0),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 13.0, top: 45),
           child: Text(
             "28/12/2021",
             style: TextStyle(
-                fontWeight: FontWeight.bold, color: purpleColor, fontSize: 18),
+                fontWeight: FontWeight.normal, color: primaryColor, fontSize: 18),
           ),
         ),
-        Divider(
-          color: purpleColor,
-          endIndent: 16.0,
-          indent: 16.0,
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 8, 
+            bottom: 21,
+            left: 16,
+            right: 16        
+          ),
+          child: Container(
+            color: primaryColor,
+            height: 1,
+          ),
         ),
       ],
     );
