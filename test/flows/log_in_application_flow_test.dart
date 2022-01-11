@@ -10,7 +10,7 @@ import '../matchers/buttonMatcher.dart';
 
 void main() {
   testWidgets(
-      'O botão de login e Novo usuário deve ser exibido quando iniciar a aplicação ',
+      'Quando iniciar a aplicação deve apresentar na tela o botão de login e o botão de Novo usuário',
       (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(routes: {
@@ -28,7 +28,7 @@ void main() {
   });
 
   testWidgets(
-      'Quando logar na aplicação deve aparecer o widget da tela de home ',
+      'Quando o usuário logar na aplicação deve aparecer as informações do usuário com gráfico de transações',
       (WidgetTester tester) async {
     await tester.pumpWidget(App());
     final logInButton = find
