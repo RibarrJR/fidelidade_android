@@ -6,3 +6,4 @@ const pixImg = 'assets/images/pix.svg';
 const tedImg = 'assets/images/ted.svg';
 const registerCirclesImg = 'assets/images/registerCircles.svg';
 const secondRegisterCirclesImg = 'assets/images/register2Circles.svg';
+const fileEmpty = 'assets/images/fileEmpty.svg';
