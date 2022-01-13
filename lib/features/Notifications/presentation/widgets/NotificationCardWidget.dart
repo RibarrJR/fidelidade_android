@@ -4,26 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationCard extends StatelessWidget {
-  String item;
+  String title;
+  String message;
+  String message2;
   Function removeNotification;
 
   NotificationCard({
     Key? key,
-    required this.item,
+    required this.title,
+    required this.message,
+    required this.message2,
     required this.removeNotification,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-        key: Key(item),
+        key: Key(title),
         direction: DismissDirection.startToEnd,
         onDismissed: (direction) { removeNotification(); },
         background: Container(color: Colors.transparent),
         child: Center(
           child: Card(
             margin:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
             child: Container(
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -64,10 +68,10 @@ class NotificationCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Você ganhou!',
+                            Text(
+                              title,
                               textAlign: TextAlign.start,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 26,
                                   fontWeight: FontWeight.bold),
@@ -76,18 +80,18 @@ class NotificationCard extends StatelessWidget {
                               height: 15,
                             ),
                             Row(
-                              children: const [
+                              children: [
                                 Text(
-                                  '300 moedas',
-                                  style: TextStyle(
+                                  message,
+                                  style: const TextStyle(
                                     color: purpleColor,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold
                                   ),
                                 ),
                                 Text(
-                                  ' Drograria araujo',
-                                  style: TextStyle(
+                                  message2,
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.normal,
                                       fontSize: 18,
