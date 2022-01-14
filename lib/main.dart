@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:fidelidade_android/features/Extract/presentation/pages/ExtractPage.dart';
 import 'package:fidelidade_android/features/Login/presentation/pages/LoginScreen.dart';
+import 'package:fidelidade_android/features/Settings/presentation/pages/SettingsPage.dart';
 import 'package:fidelidade_android/features/SignUp/presentation/pages/SignUpPage.dart';
 import 'package:fidelidade_android/features/SignUp/presentation/pages/SignUpSecondPage.dart';
 import 'package:fidelidade_android/features/Withdraw/presentation/pages/WithdrawPage.dart';
@@ -72,6 +73,7 @@ class _AppState extends State<App> {
         '/pix': (context) => const PixPage(),
         '/ted': (context) => const WithDrawTedPage(),
         '/extract': (context) => const ExtractPage(),
+        '/settings': (context) => const SettingsPage(),
       },
       debugShowCheckedModeBanner: false,
     );

@@ -34,7 +34,7 @@ class MenuPage extends StatelessWidget {
             pageName: "Sacar",
           ),
           AppMenuItem(
-            pageCall: '',
+            pageCall: 'settings',
             icon: Icon(Icons.settings),
             pageName: "Configurações",
           ),
