@@ -116,23 +116,6 @@ class _HomePageState extends State<HomePage> {
               InformationCard(
                 size: _size,
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(primaryColor)),
-                    onPressed: () async {
-                      setState(() {
-                        loadWallets();
-                      });
-                    },
-                    child: const Icon(
-                      Icons.get_app,
-                      color: moneyColor,
-                      size: 48,
-                    )),
-              ),
               const AppChart(),
             ],
           );
