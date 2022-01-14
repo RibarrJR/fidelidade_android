@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class BalanceMoneyCard extends StatelessWidget {
   final Size size;
+  final double moneyAmout;
   Function? openModal;
-  BalanceMoneyCard({Key? key, required this.size}) : super(key: key);
+  BalanceMoneyCard({Key? key, required this.size, required this.moneyAmout, this.openModal})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +34,17 @@ class BalanceMoneyCard extends StatelessWidget {
               children: [
                 Container(
                     margin: const EdgeInsets.only(left: 10),
-                    child: const Text(
-                      'R\$ 10,00',
-                      style: TextStyle(
-                          color: moneyColor,
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold),
-                    )),
+                    child: moneyAmout >= 0
+                        ? Text(
+                            'R\$ $moneyAmout',
+                            style: const TextStyle(
+                                color: moneyColor,
+                                fontSize: 48,
+                                fontWeight: FontWeight.bold),
+                          )
+                        : const CircularProgressIndicator(
+                            color: moneyColor,
+                          )),
                 Container(
                     margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: ElevatedButton(

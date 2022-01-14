@@ -7,35 +7,33 @@ import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CoinExchangeModal extends StatefulWidget {
-  final Wallet wallet;
-  final double walletTargetId;
-
+class MoneyExchangeModal extends StatefulWidget {
+  Wallet wallet;
+  double walletTargetId;
   void Function()? onModalDismiss;
 
-  CoinExchangeModal(
+  MoneyExchangeModal(
       {Key? key,
-      required this.wallet,
       this.onModalDismiss,
-      required this.walletTargetId})
+      required this.walletTargetId,
+      required this.wallet})
       : super(key: key);
 
   @override
-  _CoinExchangeModalState createState() => _CoinExchangeModalState();
+  _MoneyExchangeModalState createState() => _MoneyExchangeModalState();
 }
 
-class _CoinExchangeModalState extends State<CoinExchangeModal> {
+class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
   WalletsController walletsController = WalletsController();
-  late double coinAmount;
+  late double moneyAmount;
   late double walletId;
   late double _walletTargetId;
   double inputedValue = 0.0;
-  String moneyAmount = "R\$ 00,00";
   void Function()? onModalDismiss;
 
   @override
   void initState() {
-    coinAmount = widget.wallet.amount!;
+    moneyAmount = widget.wallet.amount!;
     walletId = widget.wallet.id!.toDouble();
     _walletTargetId = widget.walletTargetId;
     onModalDismiss = widget.onModalDismiss;
@@ -52,7 +50,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
         child: Wrap(
           children: <Widget>[
             CustomAppBar(
-              title: 'Trocar',
+              title: 'Converter',
               isOnmodal: true,
             ),
             Column(
@@ -66,14 +64,14 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                 ),
                 const Center(
                   child: Text(
-                    "A cada 100 Moedas, você pode trocar por R\$ 1,00.",
+                    "A cada R\$ 1,00 , você pode trocar por 100.",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: primaryColor, fontSize: 24),
                   ),
                 ),
                 Card(
-                  color: primaryColor,
-                  margin: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                  color: secondaryColor,
                   child: Column(
                     children: [
                       const Padding(
@@ -85,50 +83,23 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                         )),
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.asset(
-                                coinImg,
-                                width: 45,
-                                height: 45,
-                              ),
-                            ),
-                            Stack(
-                              children: <Widget>[
-                                Text(
-                                  coinAmount.toString(),
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 6
-                                      ..color = moneyColor,
-                                  ),
-                                ),
-                                Text(
-                                  coinAmount.toString(),
-                                  style: const TextStyle(
-                                    fontSize: 40,
-                                    color: primaryColor,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
+                        margin: const EdgeInsets.symmetric(vertical: 22),
+                        child: Center(
+                          child: Text(
+                            'R\$ $moneyAmount',
+                            style: const TextStyle(
+                                color: moneyColor, fontSize: 48),
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Input(
-                    labelText: "Moedas",
-                    hintText: "Moedas",
+                    labelText: "R\$",
+                    hintText: "Valor em real",
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
@@ -137,22 +108,48 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                         } else {
                           inputedValue = double.parse(value);
                         }
-                        var valueConverted = inputedValue / 100;
-                        moneyAmount = 'R\$ $valueConverted';
                       });
                     },
                   ),
                 ),
                 Card(
-                  margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  color: secondaryColor,
+                  color: primaryColor,
+                  margin: const EdgeInsets.all(16),
                   child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 22),
-                    child: Center(
-                      child: Text(
-                        moneyAmount,
-                        style: const TextStyle(color: moneyColor, fontSize: 48),
-                      ),
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(
+                            coinImg,
+                            width: 45,
+                            height: 45,
+                          ),
+                        ),
+                        Stack(
+                          children: <Widget>[
+                            Text(
+                              (inputedValue * 100).toString(),
+                              style: TextStyle(
+                                fontSize: 40,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 6
+                                  ..color = moneyColor,
+                              ),
+                            ),
+                            Text(
+                              (inputedValue * 100).toString(),
+                              style: const TextStyle(
+                                fontSize: 40,
+                                color: primaryColor,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -166,20 +163,20 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                           child: ElevatedButton(
                               style: ButtonStyle(
                                 enableFeedback: inputedValue > 0 &&
-                                        inputedValue <= coinAmount
+                                        inputedValue <= moneyAmount
                                     ? true
                                     : false,
                                 shadowColor:
                                     MaterialStateProperty.all(Colors.white),
                                 backgroundColor: MaterialStateProperty.all(
                                     inputedValue > 0 &&
-                                            inputedValue <= coinAmount
+                                            inputedValue <= moneyAmount
                                         ? primaryColor
                                         : disabledBg),
                               ),
                               onPressed: () async {
                                 if (inputedValue > 0 &&
-                                    inputedValue <= coinAmount) {
+                                    inputedValue <= moneyAmount) {
                                   var body = {
                                     "walletOriginId": walletId,
                                     "walletTargetId": _walletTargetId,
@@ -190,7 +187,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                         .transferBetweenWallets(body)
                                         .then((value) => {
                                               Navigator.pop(context),
-                                              onModalDismiss!()
+                                              onModalDismiss!(),
                                             });
                                   } catch (e) {
                                     throw Exception(e);
@@ -202,7 +199,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: inputedValue > 0 &&
-                                            inputedValue <= coinAmount
+                                            inputedValue <= moneyAmount
                                         ? Colors.white
                                         : gray),
                               ))),

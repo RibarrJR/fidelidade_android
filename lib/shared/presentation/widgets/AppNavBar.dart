@@ -139,7 +139,10 @@ class _AppNavBarState extends State<AppNavBar> with TickerProviderStateMixin {
                           archHeightController.reverse(from: 1.0);
                         });
                       },
-                      icon: const Icon(Icons.home)),
+                      icon: Icon(
+                        Icons.home,
+                        color: index == 0 ? Colors.white : moneyColor,
+                      )),
                   index == 0
                       ? const Text(
                           "Home",
@@ -167,7 +170,10 @@ class _AppNavBarState extends State<AppNavBar> with TickerProviderStateMixin {
                           archHeightController.reverse(from: 1.0);
                         });
                       },
-                      icon: const Icon(Icons.menu)),
+                      icon: Icon(
+                        Icons.menu,
+                        color: index == 1 ? Colors.white : moneyColor,
+                      )),
                   index == 1
                       ? const Text(
                           "Menu",
