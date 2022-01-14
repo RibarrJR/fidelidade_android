@@ -28,9 +28,9 @@ abstract class _WalletsController with Store {
   }
 
   @action
-  Future<void> transferCoinsToMoney(Map<String, dynamic> requestBody) async {
+  Future<void> transferBetweenWallets(Map<String, dynamic> requestBody) async {
     try {
-      await walletApi.transferCoinsToMoney(requestBody);
+      await walletApi.transferBetweenWallets(requestBody);
     } catch (e) {
       throw Exception(e);
     }

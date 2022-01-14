@@ -1,18 +1,22 @@
-import 'dart:convert';
-import 'package:fidelidade_android/appEnv.dart';
+import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
+import 'package:fidelidade_android/features/Home/models/Wallets.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/CustomAppBar.dart';
 import 'package:fidelidade_android/shared/presentation/widgets/Input.dart';
 import 'package:fidelidade_android/utils/Images.dart';
 import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:http/http.dart' as http;
 
 class MoneyExchangeModal extends StatefulWidget {
-  double moneyAmount;
+  Wallet wallet;
+  double walletTargetId;
   void Function()? onModalDismiss;
 
-  MoneyExchangeModal({Key? key, required this.moneyAmount, this.onModalDismiss})
+  MoneyExchangeModal(
+      {Key? key,
+      this.onModalDismiss,
+      required this.walletTargetId,
+      required this.wallet})
       : super(key: key);
 
   @override
@@ -20,24 +24,18 @@ class MoneyExchangeModal extends StatefulWidget {
 }
 
 class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
+  WalletsController walletsController = WalletsController();
   late double moneyAmount;
+  late double walletId;
+  late double _walletTargetId;
   double inputedValue = 0.0;
-  // String moneyAmount = "R\$ 00,00";
   void Function()? onModalDismiss;
-
-  Future<http.Response> transferCoinsToMoney(Map<String, dynamic> requestBody) {
-    return http.post(
-      Uri.parse('$apiBaseUrl/Wallet/Transfer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(requestBody),
-    );
-  }
 
   @override
   void initState() {
-    moneyAmount = widget.moneyAmount;
+    moneyAmount = widget.wallet.amount!;
+    walletId = widget.wallet.id!.toDouble();
+    _walletTargetId = widget.walletTargetId;
     onModalDismiss = widget.onModalDismiss;
     super.initState();
   }
@@ -100,8 +98,8 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Input(
-                    labelText: "Moedas",
-                    hintText: "Moedas",
+                    labelText: "R\$",
+                    hintText: "Valor em real",
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
@@ -110,8 +108,6 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                         } else {
                           inputedValue = double.parse(value);
                         }
-                        var valueConverted = inputedValue / 100;
-                        // moneyAmount = 'R\$ $valueConverted';
                       });
                     },
                   ),
@@ -135,7 +131,7 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                         Stack(
                           children: <Widget>[
                             Text(
-                              moneyAmount.toString(),
+                              (inputedValue * 100).toString(),
                               style: TextStyle(
                                 fontSize: 40,
                                 foreground: Paint()
@@ -145,7 +141,7 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                               ),
                             ),
                             Text(
-                              moneyAmount.toString(),
+                              (inputedValue * 100).toString(),
                               style: const TextStyle(
                                 fontSize: 40,
                                 color: primaryColor,
@@ -182,14 +178,17 @@ class _MoneyExchangeModalState extends State<MoneyExchangeModal> {
                                 if (inputedValue > 0 &&
                                     inputedValue <= moneyAmount) {
                                   var body = {
-                                    "walletOriginId": 1,
-                                    "walletTargetId": 2,
+                                    "walletOriginId": walletId,
+                                    "walletTargetId": _walletTargetId,
                                     "quantity": inputedValue
                                   };
                                   try {
-                                    await transferCoinsToMoney(body);
-                                    Navigator.pop(context);
-                                    onModalDismiss!();
+                                    walletsController
+                                        .transferBetweenWallets(body)
+                                        .then((value) => {
+                                              Navigator.pop(context),
+                                              onModalDismiss!(),
+                                            });
                                   } catch (e) {
                                     throw Exception(e);
                                   }

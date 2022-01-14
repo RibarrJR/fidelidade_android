@@ -5,7 +5,6 @@ import 'package:fidelidade_android/features/Home/presentation/widgets/CoinExchan
 import 'package:fidelidade_android/features/Home/presentation/widgets/HomeHeader.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/InformationCard.dart';
 import 'package:fidelidade_android/features/Home/presentation/widgets/MoneyExchangeModal.dart';
-import 'package:fidelidade_android/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fidelidade_android/features/Home/controller/WalletsController.dart';
@@ -57,8 +56,9 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext bc) {
           return MoneyExchangeModal(
-              moneyAmount:
-                  walletsController.walletsModel!.wallet![1].amount!.toDouble(),
+              wallet: walletsController.walletsModel!.wallet![1],
+              walletTargetId:
+                  walletsController.walletsModel!.wallet![0].id!.toDouble(),
               onModalDismiss: loadWallets);
         });
   }

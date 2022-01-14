@@ -17,7 +17,8 @@ class WalletsApi {
     }
   }
 
-  Future<Response>transferCoinsToMoney(Map<String, dynamic> requestBody) async {
+  Future<Response> transferBetweenWallets(
+      Map<String, dynamic> requestBody) async {
     try {
       final result = await HttpClient.postAsync(
         '$apiBaseUrl/Wallet/Transfer',

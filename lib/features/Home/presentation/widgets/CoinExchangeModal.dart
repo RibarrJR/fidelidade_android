@@ -187,7 +187,7 @@ class _CoinExchangeModalState extends State<CoinExchangeModal> {
                                   };
                                   try {
                                     walletsController
-                                        .transferCoinsToMoney(body)
+                                        .transferBetweenWallets(body)
                                         .then((value) => {
                                               Navigator.pop(context),
                                               onModalDismiss!()
