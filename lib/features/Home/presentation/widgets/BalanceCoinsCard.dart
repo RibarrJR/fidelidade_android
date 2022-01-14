@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class BalanceCoinsCard extends StatelessWidget {
   final Size size;
-  final String coinAmount;
+  final double coinAmount;
   Function? openModal;
   BalanceCoinsCard(
       {Key? key, required this.size, required this.coinAmount, this.openModal})
@@ -45,27 +45,31 @@ class BalanceCoinsCard extends StatelessWidget {
                         height: 45,
                       ),
                     ),
-                    Stack(
-                      children: <Widget>[
-                        Text(
-                          coinAmount,
-                          style: TextStyle(
-                            fontSize: 40,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 6
-                              ..color = moneyColor,
-                          ),
-                        ),
-                        Text(
-                          coinAmount,
-                          style: const TextStyle(
-                            fontSize: 40,
-                            color: primaryColor,
-                          ),
-                        ),
-                      ],
-                    )
+                    coinAmount >= 0
+                        ? Stack(
+                            children: <Widget>[
+                              Text(
+                                coinAmount.toString(),
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 6
+                                    ..color = moneyColor,
+                                ),
+                              ),
+                              Text(
+                                coinAmount.toString(),
+                                style: const TextStyle(
+                                  fontSize: 40,
+                                  color: primaryColor,
+                                ),
+                              ),
+                            ],
+                          )
+                        : const CircularProgressIndicator(
+                            color: moneyColor,
+                          )
                   ],
                 ),
                 Container(

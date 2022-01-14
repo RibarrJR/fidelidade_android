@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:fidelidade_android/appEnv.dart';
 import 'package:fidelidade_android/features/Extract/presentation/pages/ExtractPage.dart';
 import 'package:fidelidade_android/features/Login/presentation/pages/LoginScreen.dart';
 import 'package:fidelidade_android/features/Settings/presentation/pages/SettingsPage.dart';
@@ -55,6 +56,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    setEnvironment(AppEnvironment.dev);
     return MaterialApp(
       key: mtAppKey,
       title: "+Fideliade",
